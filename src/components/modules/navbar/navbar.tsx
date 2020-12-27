@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch }from 'react-redux'
 import { GetPokemon } from '../../../redux/actionCreator'
+import SearchIcon from '@material-ui/icons/Search'
+import { Link } from 'react-router-dom'
+import s from './navbar.module.css'
 
 const Navbar: React.FC = (): JSX.Element => {
     const [input, setInput] = useState("")
@@ -14,24 +17,18 @@ const Navbar: React.FC = (): JSX.Element => {
     }
 
     return(
-        <nav className="navbar navbar-default">
-            <div className="container-fluid">
-                <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <form className="navbar-form navbar-left">
-                        <div className="form-group">
-                            <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search a Pokemon"
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e.target.value)}
-                            />
-                        </div>
-                        <button
-                        type="submit"
-                        className="btn btn-default"
-                        onClick={handleSearch}
-                        >Submit</button>
-                    </form>
+        <nav className={s.container_main}>
+            <div className={s.container_searchbar}>
+                <input
+                type="text"
+                className="form-control"
+                placeholder="Search a Pokemon"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e.target.value)}
+                />
+                <div onClick={handleSearch}>
+                    <Link to={`/pokemon/${input}`} className={s.link}>
+                        <SearchIcon/>
+                    </Link>
                 </div>
             </div>
         </nav>
