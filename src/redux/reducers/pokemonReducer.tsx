@@ -2,13 +2,11 @@ import { PokemonType, PokemonDispatchTypes, POKEMON_FAIL, POKEMON_SUCCESS, POKEM
 
 interface DefaultStateI {
     loading: boolean,
-    initial?: PokemonType[],
     pokemon?: PokemonType
 }
 
 const defaultState: DefaultStateI = {
     loading: false,
-    initial: []
 }
 
 const pokemonReducer = (state: DefaultStateI = defaultState, action: PokemonDispatchTypes): DefaultStateI => {
