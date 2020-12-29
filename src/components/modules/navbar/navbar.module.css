@@ -1,8 +1,9 @@
 .container_main{
     padding-top: 15px;
     width: 100%;
-    height: 55px;
+    height: 70px;
     border-bottom: 1px solid grey;;
+    background-color: white;
 }
 .container_searchbar{
     display: flex;
