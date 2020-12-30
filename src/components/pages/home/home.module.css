@@ -11,6 +11,11 @@
 @media (max-width: 760px){
     .container_sections{
         grid-template-columns: 300px;
+        width: 300px;
+        margin: auto;
+    }
+    .section:last-child{
+        grid-column-start: 1;
     }
     .container_sections > div{
         margin: auto;

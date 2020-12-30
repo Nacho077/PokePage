@@ -19,6 +19,7 @@
 .container_title{
     color: white;
     position: absolute;
+    top: 80px;
     left: 0;
     right: 0;
     width: 70%;
@@ -37,6 +38,12 @@
 .container_pokeball{
     padding-top: 3%;
 }
+.container_navbar{
+    color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
 
 @media (max-width: 760px){
     .container_main{
@@ -45,8 +52,12 @@
     .container_title{
         font-size: 16px;
         margin-top: 10vh;
+        top: 15px;
     }
     .container_pokeball{
         display: none;
+    }
+    .container_menu{
+        display: inherit;
     }
 }

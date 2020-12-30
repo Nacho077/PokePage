@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBar from '../navbar/navbar'
 import Pokeball from '../pokeball/pokeball'
 import s from './banner.module.css'
 
@@ -14,6 +15,9 @@ type bannerProps = {
 const Banner: React.FC<bannerProps> = ({width, height, title, pokeball, background, top}): JSX.Element => {
     return(
         <div style={{backgroundImage: background, width: width, height: height}} className={s.container_main}>
+            <div className={s.container_navbar}>
+                <NavBar/>
+            </div>
             <div className={s.container_title} style={{marginTop: top}}>
                 <h1 className={s.title}>
                     {title}

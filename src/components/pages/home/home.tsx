@@ -48,10 +48,10 @@ const Home: React.FC = ():JSX.Element => {
             <div>
                 <Banner
                 width='100%'
-                height='50vh'
+                height='60vh'
                 title='Home'
                 background={`url(${background})`}
-                top='15vh'
+                top='12vh'
                 />
             </div>
             <div className={s.container_sections}>
