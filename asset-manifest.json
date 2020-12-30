@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/PokePage/static/css/main.b55a9146.chunk.css",
-    "main.js": "/PokePage/static/js/main.58f1c165.chunk.js",
-    "main.js.map": "/PokePage/static/js/main.58f1c165.chunk.js.map",
+    "main.js": "/PokePage/static/js/main.191311bd.chunk.js",
+    "main.js.map": "/PokePage/static/js/main.191311bd.chunk.js.map",
     "runtime-main.js": "/PokePage/static/js/runtime-main.195e939b.js",
     "runtime-main.js.map": "/PokePage/static/js/runtime-main.195e939b.js.map",
     "static/js/2.19d46242.chunk.js": "/PokePage/static/js/2.19d46242.chunk.js",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.195e939b.js",
     "static/js/2.19d46242.chunk.js",
     "static/css/main.b55a9146.chunk.css",
-    "static/js/main.58f1c165.chunk.js"
+    "static/js/main.191311bd.chunk.js"
   ]
 }
