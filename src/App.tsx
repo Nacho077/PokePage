@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Opening from './components/pages/opening/opening'
 import Navbar from './components/modules/navbar/navbar'
 import Footer from './components/modules/footer/footer'
@@ -12,6 +12,7 @@ function App() {
       <section className="navbar">
         <Route path="/:page" component={Navbar}/>
         <Route exact path="/" component={Opening}/>
+        <Route exact path="/Pokedex" render={() => <Redirect to="/"/>}/>
       </section>
       <section className="container_page">
         <Switch>

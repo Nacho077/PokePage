@@ -1,11 +1,16 @@
 .container_sections{
-    display: flex;
-    justify-content: space-around;
+    width: calc(300px * 3);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+}
+.section:last-child{
+    grid-column-start: 2;
 }
 
 @media (max-width: 760px){
     .container_sections{
-        flex-direction: column;
+        grid-template-columns: 300px;
     }
     .container_sections > div{
         margin: auto;
