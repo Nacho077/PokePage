@@ -4,6 +4,7 @@ export const POKEMON_LOADING: string = "POKEMON_LOADING"
 export const HOME_LOADING: string = "HOME_LOADING"
 export const HOME_SUCCESS: string = "HOME_SUCCES"
 export const HOME_FAIL: string = "HOME_FAIL"
+export const HOME_PAGES: string = "HOME_PAGES"
 
 export type PokemonData = {
     abilities: PokemonAbility[],
@@ -83,4 +84,9 @@ export interface HomeFail{
     payload: any
 }
 
-export type HomeDispatches = HomeLoading | HomeSuccess | HomeFail
+export interface HomePages{
+    type: typeof HOME_PAGES,
+    payload: number
+}
+
+export type HomeDispatches = HomeLoading | HomeSuccess | HomeFail | HomePages

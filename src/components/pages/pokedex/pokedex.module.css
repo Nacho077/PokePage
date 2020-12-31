@@ -1,0 +1,29 @@
+.container_pokedex{
+    width: 80%;
+    margin: 30px 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+    row-gap: 40px;
+}
+.loading{
+    width: 50%;
+    margin: 5% auto;
+    color: gray;
+    font-size: 25px;
+}
+.container_pages > button{
+    margin-bottom: 20px;
+    padding: 2px;
+    cursor: pointer;
+}
+.active{
+    border-radius: 5px;
+    border: 1px solid red;
+    width: 70px;
+    height: 30px;
+}
+.empty{
+    border: none;
+    width: 40px;
+}

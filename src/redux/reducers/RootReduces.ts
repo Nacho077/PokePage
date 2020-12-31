@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import pokemonReducer from './pokemonReducer'
-import homeReducer from './homeReducer'
+import pokedexReducer from './pokedexReducer'
 
 const RootReducer = combineReducers({
     pokemon: pokemonReducer,
-    home: homeReducer
+    pokedex: pokedexReducer
 })
 
 export default RootReducer

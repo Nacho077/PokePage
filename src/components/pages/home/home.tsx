@@ -52,13 +52,19 @@ const Home: React.FC = ():JSX.Element => {
                 title='Home'
                 background={`url(${background})`}
                 top='12vh'
+                nav={true}
                 />
             </div>
             <div className={s.container_sections}>
                 {sections.map(section => {
                     return (
-                    <div className={s.section}>
-                        <SectionCard img={section.img} title={section.title} subtitle={section.subtitle} to={section.to}/>
+                    <div className={s.section} key={section.title}>
+                        <SectionCard
+                        img={section.img}
+                        title={section.title}
+                        subtitle={section.subtitle}
+                        to={section.to}
+                        />
                     </div>)
                 })}
             </div>

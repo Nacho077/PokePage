@@ -9,15 +9,16 @@ type bannerProps = {
     title: string,
     pokeball?: boolean,
     background: string,
-    top?: string
+    top?: string,
+    nav?: boolean
 }
 
-const Banner: React.FC<bannerProps> = ({width, height, title, pokeball, background, top}): JSX.Element => {
+const Banner: React.FC<bannerProps> = ({width, height, title, pokeball, background, top, nav}): JSX.Element => {
     return(
         <div style={{backgroundImage: background, width: width, height: height}} className={s.container_main}>
-            <div className={s.container_navbar}>
+            {nav && <div className={s.container_navbar}>
                 <NavBar/>
-            </div>
+            </div>}
             <div className={s.container_title} style={{marginTop: top}}>
                 <h1 className={s.title}>
                     {title}

@@ -4,21 +4,35 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import s from './navbar.module.css'
 
+type LinkType = {
+    title: string,
+    to: string
+}
+
 const Navbar: React.FC = (): JSX.Element => {
     const [menu, setMenu] = useState<boolean>(false)
 
     const handleMenu = () => {
         setMenu(!menu)
     }
-   /*  const [input, setInput] = useState("")
-    const dispatch = useDispatch()
-
-    const handleChange = (value: string) => {
-        setInput(value)
-    }
-    const handleSearch = () => {
-        dispatch(GetPokemon(input))
-    } */
+    const links: LinkType[] = [
+        {
+            title: "Home",
+            to: "/"
+        },
+        {
+            title: "Pokedex",
+            to: "/pokedex"
+        },
+        {
+            title: "Games",
+            to: "/"
+        },
+        {
+            title: "Anime",
+            to: "/"
+        }
+    ]
 
     return(
         <nav className={s.container_main}>
@@ -27,10 +41,9 @@ const Navbar: React.FC = (): JSX.Element => {
                     <Link to="/"><h1 className={s.title}>PokePage</h1></Link>
                 </div>
                 <div className={s.container_nav}>
-                    <Link to="/"><h3>Home</h3></Link><h3>/</h3>
-                    <Link to="/"><h3>Pokedex</h3></Link><h3>/</h3>
-                    <Link to="/"><h3>Games</h3></Link><h3>/</h3>
-                    <Link to="/"><h3>Animes</h3></Link>
+                    {links.map(page => (
+                        <Link to={page.to} key={page.title}><h3>{page.title}</h3></Link>
+                    ))}
                 </div>
             </div>
             <div className={s.hamburguer} onClick={handleMenu}>
@@ -44,10 +57,9 @@ const Navbar: React.FC = (): JSX.Element => {
                     <CloseIcon/>
                 </div>
                 <div className={s.container_menu_nav}>
-                    <Link to="/"><h3>Home</h3></Link>
-                    <Link to="/"><h3>Pokedex</h3></Link>
-                    <Link to="/"><h3>Games</h3></Link>
-                    <Link to="/"><h3>Animes</h3></Link>
+                    {links.map(page => (
+                        <Link to={page.to} key={page.title}><h3>{page.title}</h3></Link>
+                    ))}
                 </div>
             </div>
             {/* <div className={s.container_searchbar}>

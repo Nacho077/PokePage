@@ -1,0 +1,15 @@
+.container_pages > button{
+    margin-bottom: 20px;
+    padding: 2px;
+    cursor: pointer;
+}
+.active{
+    border-radius: 5px;
+    border: 1px solid red;
+    width: 70px;
+    height: 30px;
+}
+.empty{
+    border: none;
+    width: 40px;
+}
