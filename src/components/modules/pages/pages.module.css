@@ -1,15 +1,30 @@
-.container_pages > button{
+.btn{
     margin-bottom: 20px;
     padding: 2px;
     cursor: pointer;
+    background-color: rgb(209, 243, 255, .7);
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    height: 30px;
+    width: 60px;
+    transition-property: all;
+    transition-duration: .5s;
 }
 .active{
     border-radius: 5px;
     border: 1px solid red;
     width: 70px;
     height: 30px;
+    outline: none;
+    background-color: rgb(209, 243, 255, .7);
+    transition-property: all;
+    transition-duration: .5s;
 }
 .empty{
     border: none;
     width: 40px;
+    font-weight: bolder;
+    transition-property: all;
+    transition-duration: .5s;
 }

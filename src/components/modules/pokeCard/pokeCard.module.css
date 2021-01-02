@@ -6,6 +6,7 @@
     padding: 10px;
     border-radius: 20px;
     box-shadow: 10px 10px 10px black;
+    background-color: rgb(209, 243, 255, .7);
 }
 .container_main:hover{
     width: 105%;

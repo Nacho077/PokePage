@@ -41,17 +41,17 @@ const Pages: React.FC<pageType> = ({thisPage, lastPage, changePage}): JSX.Elemen
 
     return(
         <div className={s.container_pages}>
-                {!pages.seePages.includes(1) && <button value={1} onClick={handlePages}>1</button>}
+                {!pages.seePages.includes(1) && <button value={1} onClick={handlePages} className={s.btn}>1</button>}
                 {!pages.seePages.includes(1) && <button className={s.empty}>...</button>}
                 {pages.seePages.map(page => (
                     <button
                     value={Number(page)}
                     onClick={handlePages}
                     key={page}
-                    className={pages.thisPage === page ? s.active : undefined}>{page}</button>
+                    className={Number(pages.thisPage) === Number(page) ? s.active : s.btn}>{page}</button>
                 ))}
                 {!pages.seePages.includes(Math.ceil(lastPage)) && <button className={s.empty}>...</button>}
-                {!pages.seePages.includes(Math.ceil(lastPage)) && <button value={Math.ceil(lastPage)} onClick={handlePages}>{Math.ceil(lastPage)}</button>}
+                {!pages.seePages.includes(Math.ceil(lastPage)) && <button value={Math.ceil(lastPage)} className={s.btn} onClick={handlePages}>{Math.ceil(lastPage)}</button>}
             </div>
     )
 }
