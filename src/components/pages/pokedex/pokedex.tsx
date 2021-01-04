@@ -14,8 +14,8 @@ const Pokedex: React.FC = (): JSX.Element => {
     const pokedex = useSelector((state: RootStore) => state.pokedex)
     const dispatch = useDispatch()
     useEffect(() => {
-        if(!pokedex.pokemons && pages === 1) dispatch(startPokedex())
-    }, [dispatch, pokedex.pokemons, pages])
+        if(pages === 1) dispatch(startPokedex())
+    }, [dispatch, pages])
 
     const changePages = (num: number) => {
         setPages(num)
@@ -47,6 +47,7 @@ const Pokedex: React.FC = (): JSX.Element => {
                                 sprites={pokemon.sprites}
                                 stats={pokemon.stats}
                                 types={pokemon.types}
+                                species={pokemon.species}
                                 />
                             </div>
                         ))

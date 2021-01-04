@@ -3,12 +3,11 @@ import { PokemonData, HomeDispatches, HOME_LOADING, HOME_SUCCESS, HOME_FAIL, HOM
 interface DefaultStateII{
     loading: boolean,
     pokemons?: PokemonData[],
-    totalPages: number
+    totalPages?: number
 }
 
 const defaultState: DefaultStateII = {
-    loading: false,
-    totalPages: 0
+    loading: false
 }
 
 const homeReducer = (state: DefaultStateII = defaultState, action:HomeDispatches): DefaultStateII => {

@@ -1,6 +1,6 @@
 import { PokemonData, PokemonDispatchTypes, POKEMON_FAIL, POKEMON_SUCCESS, POKEMON_LOADING } from "../actionTypes"
 
-interface DefaultStateI {
+export interface DefaultStateI {
     loading: boolean,
     pokemon?: PokemonData
 }

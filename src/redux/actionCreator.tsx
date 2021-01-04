@@ -8,7 +8,11 @@ import {PokemonDispatchTypes,
     HOME_SUCCESS,
     HOME_FAIL,
     HOME_LOADING,
-    HOME_PAGES
+    HOME_PAGES,
+    SPECIES_SUCCESS,
+    SPECIES_FAIL,
+    SPECIES_LOADING,
+    SpeciesDispatches
 } from './actionTypes'
 
 export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<PokemonDispatchTypes>) => {
@@ -22,10 +26,6 @@ export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<Pokemon
             type: POKEMON_SUCCESS,
             payload: res.data
         })
-        dispatch({
-            type: HOME_PAGES,
-            payload: (res.data.count) / 9
-        })
     }catch(e){
         dispatch({
             type: POKEMON_FAIL,
@@ -33,7 +33,6 @@ export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<Pokemon
         })
     }
 }
-
 
 export const startPokedex = () => async (dispatch: Dispatch<HomeDispatches>) => {
     try{
@@ -79,6 +78,52 @@ export const changePage = (page: number) => async (dispatch: Dispatch<HomeDispat
         dispatch({
             type: HOME_SUCCESS,
             payload: pokemons
+        })
+    }catch{
+        dispatch({
+            type: HOME_FAIL,
+            payload: null
+        })
+    }
+}
+
+export const getSpecies = (name: string) => async (dispatch: Dispatch<SpeciesDispatches>) => {
+    try{
+        dispatch({
+            type: SPECIES_LOADING,
+            payload: null
+        })
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+        const species = await axios.get(res.data.species.url)
+        dispatch({
+            type: SPECIES_SUCCESS,
+            payload: species.data
+        })
+    }catch{
+        dispatch({
+            type: SPECIES_FAIL,
+            payload: null
+        })
+    }
+}
+
+export const loadVarieties = (pokemon: string) => async (dispatch: Dispatch<HomeDispatches>) => {
+    try{
+        dispatch({
+            type: HOME_LOADING,
+            payload: null
+        })
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+        const species = await axios.get(res.data.species.url)
+        var variety = []
+        for(var i = 0; species.data.varieties.length; i++){
+            const varie = await axios.get(species.data.varieties[i].pokemon.url)
+            variety.push(varie.data)
+            console.log(species.data.varieties[i].pokemon.url)
+        }
+        dispatch({
+            type: HOME_SUCCESS,
+            payload: variety
         })
     }catch{
         dispatch({

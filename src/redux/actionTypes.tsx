@@ -5,6 +5,14 @@ export const HOME_LOADING: string = "HOME_LOADING"
 export const HOME_SUCCESS: string = "HOME_SUCCES"
 export const HOME_FAIL: string = "HOME_FAIL"
 export const HOME_PAGES: string = "HOME_PAGES"
+export const SPECIES_SUCCESS: string = "SPECIES_SUCCES"
+export const SPECIES_FAIL: string = "SPECIES_FAIL"
+export const SPECIES_LOADING: string = "SPECIES_PAGES"
+
+export type nameUrl = {
+    name: string,
+    url: string
+}
 
 export type PokemonData = {
     abilities: PokemonAbility[],
@@ -13,28 +21,30 @@ export type PokemonData = {
     name: string,
     sprites: PokemonSprites,
     stats: PokemonStat[],
-    types: PokemonType[]
+    types: PokemonType[],
+    species: nameUrl
+}
+
+export type PokemonGames = {
+    gameIndex: number,
+    version: nameUrl
 }
 
 export type PokemonAbility = {
-    ability: {
-        name: string,
-        url: string
-    }
+    ability: nameUrl
 }
 
 export type PokemonMove = {
-    move: {
-        name: string,
-        url: string
-    }
+    move: nameUrl
 }
 
 export type PokemonSprites = {
+    [key: string]: string
     front_default: string,
-    front_female: unknown,
+    front_female: string,
     front_shiny: string,
-    front_shiny_female: unknown
+    front_shiny_female: string,
+    other: any
 }
 
 export type PokemonStat = {
@@ -48,6 +58,29 @@ export type PokemonType = {
     type: {
         name: string
     }
+}
+
+export type SpeciesData = {
+    evolution_chain: {url: string},
+    flavor_text_entries: PokemonFlavor[],
+    genere: PokemonGenere[],
+    habitat: nameUrl,
+    varieties: PokemonVar[]
+}
+
+export type PokemonVar = {
+    pokemon: nameUrl
+}
+
+export type PokemonGenere = {
+    genus: string,
+    languaje: {name: string}
+}
+
+export type PokemonFlavor =  {
+    flavor_text: string,
+    lenguaje: {name: string},
+    version: nameUrl
 }
 
 // interface Loading / Fail
@@ -90,3 +123,21 @@ export interface HomePages{
 }
 
 export type HomeDispatches = HomeLoading | HomeSuccess | HomeFail | HomePages
+
+//for evolutions and more info in /pokemon/:name
+export interface SpeciesLoading{
+    type: typeof SPECIES_LOADING,
+    payload: any
+}
+
+export interface SpeciesFail{
+    type: typeof SPECIES_FAIL,
+    payload: any
+}
+
+export interface SpeciesSuccess{
+    type: typeof SPECIES_SUCCESS,
+    payload: SpeciesData
+}
+
+export type SpeciesDispatches = SpeciesLoading | SpeciesFail | SpeciesSuccess
