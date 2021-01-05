@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom'
-import Opening from './components/pages/opening/opening'
-import Footer from './components/modules/footer/footer'
 import Home from './components/pages/home/home'
+import Footer from './components/modules/footer/footer'
+import Opening from './components/pages/opening/opening'
 import Pokedex from './components/pages/pokedex/pokedex'
 import Pokemon from './components/pages/pokemon/pokemon'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import PokedexDef from './components/pages/pokedexDef/pokedex'
 import './App.css';
 
 const App: React.FC = ():JSX.Element => {
@@ -15,8 +16,9 @@ const App: React.FC = ():JSX.Element => {
       <section className="container_page">
         <Switch>
             <Route path="/home" component={Home}/>
-            <Route path="/pokedex" component={Pokedex}/>
+            <Route exact path="/pokedex" component={Pokedex}/>
             <Route path="/pokemon/:name" component={Pokemon}/>
+            <Route path="/pokedex/:name" component={PokedexDef}/>
         </Switch>
       </section>
       <section className="footer">

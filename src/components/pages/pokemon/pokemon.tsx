@@ -6,7 +6,9 @@ import { PokemonData, SpeciesData } from '../../../redux/actionTypes'
 import Navbar from '../../modules/navbar/navbar'
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 import Table, { TableBody } from '../../modules/table/table'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import s from './pokemon.module.css'
+
 type props = {
     match: {
         params: {
@@ -136,8 +138,11 @@ const Pokemon:React.FC<props> = (prop) => {
                         <div className={s.container_info}>
                             {Object.keys(tables).map(info => (
                                 <div className={s.container_table_title}>
-                                    <div className={s.title}>
-                                        <h1 onClick={() => handleTables(info)}>{info}</h1>
+                                    <div className={s.title} onClick={() => handleTables(info)}>
+                                        <h1>{info}</h1>
+                                        <div className={s.icon} style={{transform: tables[info].body.length ? 'rotate(180deg)' : 'none'}}>
+                                            <KeyboardArrowDownIcon/>
+                                            </div>
                                     </div>
                                     <div
                                     className={s.container_table}
