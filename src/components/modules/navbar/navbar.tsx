@@ -18,7 +18,7 @@ const Navbar: React.FC = (): JSX.Element => {
     const links: LinkType[] = [
         {
             title: "Home",
-            to: "/"
+            to: "/home"
         },
         {
             title: "Pokedex",

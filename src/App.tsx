@@ -5,7 +5,6 @@ import Opening from './components/pages/opening/opening'
 import Pokedex from './components/pages/pokedex/pokedex'
 import Pokemon from './components/pages/pokemon/pokemon'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import PokedexDef from './components/pages/pokedexDef/pokedex'
 import './App.css';
 
 const App: React.FC = ():JSX.Element => {
@@ -18,7 +17,7 @@ const App: React.FC = ():JSX.Element => {
             <Route path="/home" component={Home}/>
             <Route exact path="/pokedex" component={Pokedex}/>
             <Route path="/pokemon/:name" component={Pokemon}/>
-            <Route path="/pokedex/:name" component={PokedexDef}/>
+            <Route path="/pokedex/:zone" render={(props) => <div><Pokedex zone={props.match.params.zone}/></div>}/>
         </Switch>
       </section>
       <section className="footer">

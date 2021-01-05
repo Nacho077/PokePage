@@ -11,6 +11,7 @@ export const SPECIES_LOADING: string = "SPECIES_PAGES"
 export const INFO_SUCCESS: string = "INFO_SUCCES"
 export const INFO_FAIL: string = "INFO_FAIL"
 export const INFO_LOADING: string = "INFO_PAGES"
+export const POKEDEX: string = "POKEDEX"
 
 export type nameUrl = {
     name: string,
@@ -92,6 +93,8 @@ export type PokemonFlavor =  {
     version: nameUrl
 }
 
+export type PokedexType = nameUrl[]
+
 // interface Loading / Fail
 export interface PokemonLoading{
     type: typeof POKEMON_LOADING,
@@ -131,7 +134,12 @@ export interface HomePages{
     payload: number
 }
 
-export type HomeDispatches = HomeLoading | HomeSuccess | HomeFail | HomePages
+export interface Pokedexes{
+    type: typeof POKEDEX,
+    payload: PokedexType
+}
+
+export type HomeDispatches = HomeLoading | HomeSuccess | HomeFail | HomePages | Pokedexes
 
 //for evolutions and more info in /pokemon/:name
 export interface SpeciesLoading{

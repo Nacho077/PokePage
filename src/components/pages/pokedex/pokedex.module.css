@@ -12,6 +12,19 @@
     color: gray;
     font-size: 25px;
 }
+.container_pokedexes{
+    display: unset;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 20px;
+}
+.pokedex{
+    width: 90%;
+    background-color: green;
+    font-size: 18px;
+    margin: 5px;
+    border-radius: 5px;
+}
 .container_pages > button{
     margin-bottom: 20px;
     padding: 2px;
@@ -26,4 +39,37 @@
 .empty{
     border: none;
     width: 40px;
+}
+.container_menu_pokedexes{
+    display: none;
+}
+.menu_pokedex{
+    width: 90%;
+    background-color: green;
+    color: white;
+    margin: 20px auto;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.container_pokedexes_menu{
+    width: 100%;
+    margin: auto;
+    transition-property: all;
+    transition-duration: .6s;
+}
+
+@media (max-width: 760px){
+    .container_pokedex{
+        grid-template-columns: 90%; 
+        margin: 50px auto;
+    }
+    .container_pokedexes{
+        display: none;
+    }
+    .container_menu_pokedexes{
+        display: unset;
+    }
+    .pokedex{
+        margin: 8px auto;
+    }
 }

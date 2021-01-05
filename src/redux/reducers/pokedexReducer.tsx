@@ -1,9 +1,10 @@
-import { PokemonData, HomeDispatches, HOME_LOADING, HOME_SUCCESS, HOME_FAIL, HOME_PAGES } from '../actionTypes'
+import { PokedexType, PokemonData, HomeDispatches, HOME_LOADING, HOME_SUCCESS, HOME_FAIL, HOME_PAGES, POKEDEX } from '../actionTypes'
 
 interface DefaultStateII{
     loading: boolean,
     pokemons?: PokemonData[],
-    totalPages: number
+    totalPages: number,
+    pokedex?: PokedexType
 }
 
 const defaultState: DefaultStateII = {
@@ -33,6 +34,11 @@ const homeReducer = (state: DefaultStateII = defaultState, action: HomeDispatche
             return{
                 ...state,
                 totalPages: action.payload
+            }
+        case POKEDEX:
+            return{
+                ...state,
+                pokedex: action.payload
             }
         default:
             return state

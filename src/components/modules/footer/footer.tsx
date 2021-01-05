@@ -22,12 +22,12 @@ const Footer: React.FC = ():JSX.Element => {
                         </a>
                     </div>
                     <div>
-                        <a href="mailto:ignaciogimenez70@gmail.com" rel="noreferrer" target="_blank">
+                        <a href="https://www.linkedin.com/in/ignacio-gimenez-305799184/" rel="noreferrer" target="_blank">
                             <LinkedInIcon/><div className={s.text}>Ignacio Gimenez</div>
                         </a>
                     </div>
                     <div>
-                        <a href="mailto:ignaciogimenez70@gmail.com" rel="noreferrer" target="_blank">
+                        <a href="https://github.com/Nacho077" rel="noreferrer" target="_blank">
                             <GitHubIcon/><div className={s.text}>Nacho077</div>
                         </a>
                     </div>
