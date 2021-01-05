@@ -1,6 +1,7 @@
 import { Dispatch } from 'redux'
 import axios from 'axios'
 import {PokemonDispatchTypes,
+    SpeciesDispatches,
     POKEMON_LOADING,
     POKEMON_FAIL,
     POKEMON_SUCCESS,
@@ -11,8 +12,7 @@ import {PokemonDispatchTypes,
     HOME_PAGES,
     SPECIES_SUCCESS,
     SPECIES_FAIL,
-    SPECIES_LOADING,
-    SpeciesDispatches
+    SPECIES_LOADING
 } from './actionTypes'
 
 export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<PokemonDispatchTypes>) => {
@@ -102,32 +102,6 @@ export const getSpecies = (name: string) => async (dispatch: Dispatch<SpeciesDis
     }catch{
         dispatch({
             type: SPECIES_FAIL,
-            payload: null
-        })
-    }
-}
-
-export const loadVarieties = (pokemon: string) => async (dispatch: Dispatch<HomeDispatches>) => {
-    try{
-        dispatch({
-            type: HOME_LOADING,
-            payload: null
-        })
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-        const species = await axios.get(res.data.species.url)
-        var variety = []
-        for(var i = 0; species.data.varieties.length; i++){
-            const varie = await axios.get(species.data.varieties[i].pokemon.url)
-            variety.push(varie.data)
-            console.log(species.data.varieties[i].pokemon.url)
-        }
-        dispatch({
-            type: HOME_SUCCESS,
-            payload: variety
-        })
-    }catch{
-        dispatch({
-            type: HOME_FAIL,
             payload: null
         })
     }

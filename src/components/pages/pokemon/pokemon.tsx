@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { GetPokemon, getSpecies, loadVarieties } from '../../../redux/actionCreator'
+import { GetPokemon, getSpecies } from '../../../redux/actionCreator'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootStore } from '../../../store'
 import { PokemonData, SpeciesData } from '../../../redux/actionTypes'
 import Navbar from '../../modules/navbar/navbar'
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
+import Table, { TableBody } from '../../modules/table/table'
 import s from './pokemon.module.css'
-
 type props = {
     match: {
         params: {
@@ -15,11 +14,40 @@ type props = {
         }
     }
 }
+
+type TableState = {
+    [key: string]: state,
+    variety: state,
+    pokedex: state,
+    entries: state
+}
+
+type state = {
+    header: string[],
+    body: TableBody[]
+}
     
 const Pokemon:React.FC<props> = (prop) => {
     const dispatch = useDispatch()
     const [mode, setMode] = useState("front") //front / back
     const pokemonName: string = prop.match.params.name
+    const [tables, setTable] = useState<TableState>({
+        variety: {
+            header: ['varieties'],
+            body: []
+        },
+        pokedex: {
+            header: ['Pokedex', 'Number'],
+            body: []
+        },
+        entries: {
+            header: ['Version', 'Description'],
+            body: []
+        }
+    })
+    const varietie: TableBody[] = []
+    const pokedexes: TableBody[] = []
+    const entries: TableBody[] = []
     const loading: boolean = useSelector((state: RootStore) => state.pokemon.loading)
     const pokemon: PokemonData | undefined = useSelector((state: RootStore) => state.pokemon.pokemon)
     const species: SpeciesData | undefined = useSelector((state: RootStore) => state.species.species)
@@ -27,12 +55,49 @@ const Pokemon:React.FC<props> = (prop) => {
     useEffect(() => {
         dispatch(GetPokemon(pokemonName))
         dispatch(getSpecies(pokemonName))
-        dispatch(loadVarieties(pokemonName))
     }, [dispatch, pokemonName])
-    console.log(species)
 
     const handleMode = () => {
         mode === "front" ? setMode("back") : setMode("front")
+    }
+
+    const handleTables = (table: string) => {
+        setTable({
+            ...tables,
+            [table]: {
+                ...tables[table],
+                body: tables[table].body.length ? [] : asignVar(table)
+            }
+        })
+    }
+
+    const asignVar = (name: string) => {
+        switch(name){
+            case 'variety':
+                species?.varieties.map(vari => varietie.push({
+                    link: vari.pokemon.url,
+                    name: vari.pokemon.name
+                }))
+                return varietie
+            case 'pokedex':
+                species?.pokedex_numbers.map(poked => pokedexes.push({
+                    name: poked.pokedex.name,
+                    link: poked.pokedex.url,
+                    description: poked.entry_number
+                }))
+                return pokedexes
+            case 'entries':
+                species?.flavor_text_entries.filter(entrie => entrie.language.name === 'en').map(entry => (
+                    entries.push({
+                        name: entry.version.name,
+                        link: entry.version.url,
+                        description: entry.flavor_text
+                    })
+                ))
+                return entries
+            default:
+                return []
+        }
     }
 
     return(
@@ -44,62 +109,47 @@ const Pokemon:React.FC<props> = (prop) => {
                 pokemon ? (
                     <div className={s.container_pokemon}>
                         <h1>{pokemon.name.replace(/\b\w/g, a => a.toUpperCase())}</h1>
-                        <div className={s.container_headers}>
-                            <h5>Male</h5>
-                            <h5>Female</h5>
-                        </div>
-                        <div className={s.container_photos}>
-                            <div className={s.container_all_images}>
-                                <div className={s.container_images}>
-                                    <h3>Default {mode}</h3>
-                                    {Object.keys(pokemon.sprites).map((sprite: string) => (
-                                        <div key={sprite}>
-                                            {sprite.split("_")[0] === mode && sprite.split("_")[1] !== "shiny" && 
-                                            sprite.split("_")[sprite.split("_").length - 1] === "default" &&
-                                                <img src={pokemon.sprites[sprite]} alt={sprite}/>}
-                                            {(sprite.split("_")[0] === mode && sprite.split("_")[1] !== "shiny" && 
-                                            sprite.split("_")[sprite.split("_").length - 1] === "female") &&
-                                                (pokemon.sprites[sprite] === null ? (<img src={pokemon.sprites[`${mode}_default`]} alt={sprite}/>) : 
-                                                (<img src={pokemon.sprites[sprite]} alt={sprite}/>))}
-                                        </div>
-                                    ))}
+                        <div className={s.container_images}>
+                            <div className={s.container_photos_title}>
+                                <div className={s.empty}></div>
+                                <div className={s.container_title}><h3>Male</h3></div>
+                                <div className={s.container_title}><h3>Female</h3></div>
+                                <div className={s.container_title}><h3>Default {mode}</h3></div>
+                                <div className={s.container_photo}>
+                                    <img src={pokemon?.sprites[`${mode}_default`]} alt={`${mode}_male`}/>
                                 </div>
-                                <div className={s.container_images}>
-                                    <h3>Shiny {mode}</h3>
-                                    {Object.keys(pokemon.sprites).map((sprite: string) => (
-                                            <div key={sprite}>
-                                                {sprite.split("_")[0] === mode && sprite.split("_")[1] === "shiny" && 
-                                                sprite.split("_")[sprite.split("_").length - 1] === "shiny" &&
-                                                    <img src={pokemon.sprites[sprite]} alt={sprite}/>}
-                                                {(sprite.split("_")[0] === mode && sprite.split("_")[1] === "shiny" && 
-                                                sprite.split("_")[sprite.split("_").length - 1] === "female") &&
-                                                    (pokemon.sprites[sprite] === null ? (<img src={pokemon.sprites[`${mode}_shiny`]} alt={sprite}/>) : 
-                                                    (<img src={pokemon.sprites[sprite]} alt={sprite}/>))}
-                                            </div>
-                                        ))}
+                                <div className={s.container_photo}>
+                                    <img src={pokemon?.sprites[`${mode}_female`] || pokemon?.sprites[`${mode}_default`]} alt={`${mode}_female`}/>
+                                </div>
+                                <div className={s.container_title}><h3>Shiny {mode}</h3></div>
+                                <div className={s.container_photo}>
+                                    <img src={pokemon?.sprites[`${mode}_shiny`]} alt={`${mode}_shiny_male`}/>
+                                </div>
+                                <div className={s.container_photo}>
+                                    <img src={pokemon?.sprites[`${mode}_shiny_female`] || pokemon?.sprites[`${mode}_shiny`]} alt={`${mode}_shiny_female`}/>
                                 </div>
                             </div>
-                            <div className={s.container_rotate} onClick={handleMode}><RotateLeftIcon/></div>
+                            <div className={s.container_btn} onClick={handleMode}>
+                                <RotateLeftIcon/>
+                            </div>
                         </div>
                         <div className={s.container_info}>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Varieties</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {species ? (species.varieties.map(variety => (
-                                        <tr key={variety.pokemon.name}>
-                                            <td className={s.container_link}>
-                                                <Link to={`/${variety.pokemon.url}`} className={s.link}>
-                                                    {variety.pokemon.name}
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    ))) : (<div className={s.loading}>Loading info...</div>)}
-                                </tbody>
-                            </table>
+                            {Object.keys(tables).map(info => (
+                                <div className={s.container_table_title}>
+                                    <div className={s.title}>
+                                        <h1 onClick={() => handleTables(info)}>{info}</h1>
+                                    </div>
+                                    <div
+                                    className={s.container_table}
+                                    style={{fontSize: tables[info].body.length ? '16px' : '0'}}>
+                                        <Table
+                                        headers={tables[info].header}
+                                        body={tables[info].body}
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                            
                         </div>
                     </div>
                 ) : (<div className={s.loading}>Not pokemons here</div>)

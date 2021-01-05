@@ -11,7 +11,7 @@ const defaultState: DefaultStateII = {
     totalPages: 0
 }
 
-const homeReducer = (state: DefaultStateII = defaultState, action:HomeDispatches): DefaultStateII => {
+const homeReducer = (state: DefaultStateII = defaultState, action: HomeDispatches): DefaultStateII => {
     switch(action.type){
         case HOME_LOADING:
             return{

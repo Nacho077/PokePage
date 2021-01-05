@@ -8,6 +8,9 @@ export const HOME_PAGES: string = "HOME_PAGES"
 export const SPECIES_SUCCESS: string = "SPECIES_SUCCES"
 export const SPECIES_FAIL: string = "SPECIES_FAIL"
 export const SPECIES_LOADING: string = "SPECIES_PAGES"
+export const INFO_SUCCESS: string = "INFO_SUCCES"
+export const INFO_FAIL: string = "INFO_FAIL"
+export const INFO_LOADING: string = "INFO_PAGES"
 
 export type nameUrl = {
     name: string,
@@ -65,7 +68,13 @@ export type SpeciesData = {
     flavor_text_entries: PokemonFlavor[],
     genere: PokemonGenere[],
     habitat: nameUrl,
-    varieties: PokemonVar[]
+    varieties: PokemonVar[],
+    pokedex_numbers: PokedexNum[]
+}
+
+export type PokedexNum = {
+    entry_number: number,
+    pokedex: nameUrl
 }
 
 export type PokemonVar = {
@@ -74,12 +83,12 @@ export type PokemonVar = {
 
 export type PokemonGenere = {
     genus: string,
-    languaje: {name: string}
+    language: {name: string}
 }
 
 export type PokemonFlavor =  {
     flavor_text: string,
-    lenguaje: {name: string},
+    language: {name: string},
     version: nameUrl
 }
 
@@ -141,3 +150,22 @@ export interface SpeciesSuccess{
 }
 
 export type SpeciesDispatches = SpeciesLoading | SpeciesFail | SpeciesSuccess
+
+//infoPokemon
+
+export interface InfoLoading{
+    type: typeof INFO_LOADING,
+    payload: any
+}
+
+export interface InfoFail{
+    type: typeof INFO_FAIL,
+    payload: any
+}
+
+export interface InfoSuccess{
+    type: typeof INFO_SUCCESS,
+    payload: PokemonData[]
+}
+
+export type InfoDispatch = InfoLoading | InfoFail | InfoFail

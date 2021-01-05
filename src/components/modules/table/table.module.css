@@ -1,0 +1,19 @@
+.link{
+    color: blue;
+}
+.container_table{
+    border-collapse: collapse;
+}
+.header{
+    padding: 5px;
+}
+.info{
+    text-align: left;
+    width: auto;
+    padding: 3px;
+    border-right: 1px solid gray;
+}
+.line{
+    width: auto;
+    max-width: 300px;
+}

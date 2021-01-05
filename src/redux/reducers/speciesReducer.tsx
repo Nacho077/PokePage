@@ -24,8 +24,8 @@ const speciesReducer = (state: DefaultStateIII = defaultState, action: SpeciesDi
                 loading: false,
                 species: action.payload
             }
-        default:
-            return state
+       default:
+           return state
     }
 }
 
