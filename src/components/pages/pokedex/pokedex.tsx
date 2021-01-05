@@ -19,9 +19,8 @@ const Pokedex: React.FC<pokedexType> = ({zone}): JSX.Element => {
     const pokedex = useSelector((state: RootStore) => state.pokedex)
     const dispatch = useDispatch()
     useEffect(() => {
-        /* if(pages === 1) dispatch(startPokedex()) */
-        zone ? dispatch(specifiPokedex(zone)) :  pages === 1 && dispatch(startPokedex())
-        dispatch(getPokedex())
+        zone ? dispatch(specifiPokedex(zone)) :  pages === 1 ? dispatch(startPokedex()) : setMenu(false)
+        !pokedex.pokedex && dispatch(getPokedex())
     }, [dispatch, pages, zone])
 
     const changePages = (num: number) => {

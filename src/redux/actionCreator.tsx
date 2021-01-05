@@ -154,7 +154,7 @@ export const changePageZone = (page: number, zone: number | string) => async (di
         })
         const res = await axios.get(`https://pokeapi.co/api/v2/pokedex/${zone}`)
         var pokemons = []
-        for(let i = offset - 9; i < offset; i++){
+        for(let i = offset; i < offset + 9; i++){
             const pokeName = res.data.pokemon_entries[i].pokemon_species.name
             const pok = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
             pokemons.push(pok.data)
