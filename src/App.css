@@ -1,3 +1,7 @@
+*{
+  transition-property: all;
+  transition-duration: .6s;
+}
 .App {
   text-align: center;
   height: 100%;

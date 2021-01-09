@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { startPokedex, changePage, getPokedex, specifiPokedex, changePageZone } from '../../../redux/actionCreator'
+import {
+    startPokedex,
+    changePage,
+    getPokedex,
+    specifiPokedex,
+    changePageZone,
+    SearchPokemon
+} from '../../../redux/actionCreator'
 import { RootStore } from '../../../store'
 import { Link } from 'react-router-dom'
 import Banner from '../../modules/banner/banner'
 import PokeCard from '../../modules/pokeCard/pokeCard'
 import background from './background.jpeg'
 import Pages from '../../modules/pages/pages'
+import SearchIcon from '@material-ui/icons/Search'
 import s from './pokedex.module.css'
 
 type pokedexType = {
@@ -14,6 +22,7 @@ type pokedexType = {
 }
 
 const Pokedex: React.FC<pokedexType> = ({zone}): JSX.Element => {
+    const [input, setInput] = useState<string>("")
     const [menu, setMenu] = useState<boolean>(false)
     const [pages, setPages] = useState<number>(1)
     const pokedex = useSelector((state: RootStore) => state.pokedex)
@@ -84,6 +93,18 @@ const Pokedex: React.FC<pokedexType> = ({zone}): JSX.Element => {
                         </div>
                     </Link>
                 ))}
+            </div>
+            <div className={s.container_input}>
+                <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Search a Pokemon"
+                />
+                <div
+                className={s.container_icon}
+                onClick={() => dispatch(SearchPokemon(input))}
+                ><SearchIcon/></div>
             </div>
             <div>
                 {pokedex.loading ? (<div className={s.loading}>Loading...</div>) : (

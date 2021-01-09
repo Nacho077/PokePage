@@ -57,6 +57,29 @@
     transition-property: all;
     transition-duration: .6s;
 }
+.container_input{
+    width: 32%;
+    border: 1px solid gray;
+    border-radius: 15px;
+    margin: auto;
+    background-color: white;
+    display: flex;
+}
+.container_input>input{
+    margin-left: 15px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 8px;
+}
+.container_icon{
+    cursor: pointer;
+    width: 50px;
+    border-left: 1px solid gray;
+    padding: 8px;
+    color: gray;
+}
+
 
 @media (max-width: 760px){
     .container_pokedex{

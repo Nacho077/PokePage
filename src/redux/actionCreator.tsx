@@ -170,3 +170,31 @@ export const changePageZone = (page: number, zone: number | string) => async (di
         })
     }
 }
+
+export const SearchPokemon = (pokeName: string) => async (dispatch: Dispatch<HomeDispatches>) => {
+    try{
+        dispatch({
+            type: HOME_LOADING,
+            payload: null
+        })
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeName}`)
+        var pokemons = []
+        for(let i = 0; i < res.data.varieties.length; i++){
+            const pok = await axios.get(res.data.varieties[i].pokemon.url)
+            pokemons.push(pok.data)
+        }
+        dispatch({
+            type: HOME_SUCCESS,
+            payload: pokemons
+        })
+        dispatch({
+            type: HOME_PAGES,
+            payload: 1
+        })
+    }catch(e){
+        dispatch({
+            type: HOME_FAIL,
+            payload: null
+        })
+    }
+}

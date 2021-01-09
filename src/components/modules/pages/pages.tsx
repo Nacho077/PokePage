@@ -15,7 +15,7 @@ type statePage = {
 const Pages: React.FC<pageType> = ({thisPage, lastPage, changePage}): JSX.Element => {
     const [pages, setpages] = useState<statePage>({
         thisPage: thisPage,
-        seePages: [1, 2, 3, 4, 5]
+        seePages: lastPage === 1 ? [1] : [1, 2, 3, 4, 5]
     })
 
     const handlePages = (event: React.MouseEvent) => {
