@@ -2,6 +2,7 @@ import { Dispatch } from 'redux'
 import axios from 'axios'
 import {PokemonDispatchTypes,
     SpeciesDispatches,
+    TypeDispatches,
     POKEMON_LOADING,
     POKEMON_FAIL,
     POKEMON_SUCCESS,
@@ -13,7 +14,10 @@ import {PokemonDispatchTypes,
     SPECIES_SUCCESS,
     SPECIES_FAIL,
     SPECIES_LOADING,
-    POKEDEX
+    POKEDEX,
+    TYPE_SUCCESS,
+    TYPE_FAIL,
+    TYPE_LOADING
 } from './actionTypes'
 
 export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<PokemonDispatchTypes>) => {
@@ -194,6 +198,29 @@ export const SearchPokemon = (pokeName: string) => async (dispatch: Dispatch<Hom
     }catch(e){
         dispatch({
             type: HOME_FAIL,
+            payload: null
+        })
+    }
+}
+
+export const getTypes = () => async (dispatch: Dispatch<TypeDispatches>) => {
+    try{
+        dispatch({
+            type: TYPE_LOADING,
+            payload: null
+        })
+        const res = await axios.get(`https://pokeapi.co/api/v2/type`)
+        const types = []
+        for(let i = 0; i < res.data.results.length; i++){
+            types.push(res.data.results[i])
+        }
+        dispatch({
+            type: TYPE_SUCCESS,
+            payload: types
+        })
+    }catch{
+        dispatch({
+            type: TYPE_FAIL,
             payload: null
         })
     }

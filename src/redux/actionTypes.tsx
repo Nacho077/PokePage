@@ -12,6 +12,9 @@ export const INFO_SUCCESS: string = "INFO_SUCCES"
 export const INFO_FAIL: string = "INFO_FAIL"
 export const INFO_LOADING: string = "INFO_PAGES"
 export const POKEDEX: string = "POKEDEX"
+export const TYPE_SUCCESS: string = "TYPE_SUCCESS"
+export const TYPE_LOADING: string = "TYPE_LOADING"
+export const TYPE_FAIL: string = "TYPE_FAIL"
 
 export type nameUrl = {
     name: string,
@@ -177,3 +180,20 @@ export interface InfoSuccess{
 }
 
 export type InfoDispatch = InfoLoading | InfoFail | InfoFail
+
+export interface TypeSuccess{
+    type: typeof TYPE_SUCCESS,
+    payload: nameUrl[]
+}
+
+export interface TypeFail{
+    type: typeof TYPE_LOADING,
+    payload: any
+}
+
+export default interface TypeLoading{
+    type: typeof TYPE_FAIL,
+    payload: any
+}
+
+export type TypeDispatches = TypeSuccess | TypeFail | TypeLoading

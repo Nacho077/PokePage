@@ -1,0 +1,90 @@
+.container_types{
+    width: 90%;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat( 10, 1fr);
+    gap: 15px;
+}
+.btn{
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+    background: var(--backGrad);
+    background-color: var(--back);
+    color: var(--color, black);
+    box-shadow: 3px 3px 20px var(--back, gray);
+}
+.normal{
+    --back: gray;
+    --color: white;
+}
+.fighting{
+    --back: rgb(255, 132, 0);
+    --color: white;
+}
+.flying{
+    --backGrad: linear-gradient(180deg, #3dc7ef, gray);
+    --color: white;
+}
+.poison{
+    --back: #b97fc9;
+}
+.ground{
+    --backGrad: linear-gradient(180deg, #f7de3f, #ab9842);
+    --color: white;
+}
+.rock{
+    --back: #a38c21;
+    --color: white;
+}
+.bug{
+    --back: #729f3f;
+    --color: white;
+}
+.ghost{
+    --back: #7b62a3;
+    --color: white;
+}
+.steel{
+    --back: #9eb7b8;
+}
+.fire{
+    --back: #fd7d24;
+    --color: white;
+}
+.water{
+    --back: #4592c4;
+    --color: white;
+}
+.grass{
+    --back: #9bcc50;
+}
+.electric{
+    --back: #eed535;
+}
+.psychic{
+    --back: #f366b9;
+    --color: white;
+}
+.ice{
+    --back: #51c4e7;
+}
+.dragon{
+    --backGrad: linear-gradient(180deg, #53a4cf, #f16e57);
+    --color: white;
+}
+.dark{
+    --back: #707070;
+    --color: white;
+}
+.fairy{
+    --back: #fdb9e9;
+}
+.unknown{
+    --back: gray;
+    --color: white;
+} 
+.shadow{
+    --back: #707070;
+    --color: white;
+}

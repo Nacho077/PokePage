@@ -4,6 +4,7 @@ import Footer from './components/modules/footer/footer'
 import Opening from './components/pages/opening/opening'
 import Pokedex from './components/pages/pokedex/pokedex'
 import Pokemon from './components/pages/pokemon/pokemon'
+import Types from './components/pages/types/types'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css';
 
@@ -15,9 +16,11 @@ const App: React.FC = ():JSX.Element => {
       <section className="container_page">
         <Switch>
             <Route path="/home" component={Home}/>
+            <Route exact path="/types" component={Types}/>
+            <Route path="/type/:type" render={(props) => <Types selected={props.match.params.type}/>}/>
             <Route exact path="/pokedex" component={Pokedex}/>
             <Route path="/pokemon/:name" component={Pokemon}/>
-            <Route path="/pokedex/:zone" render={(props) => <div><Pokedex zone={props.match.params.zone}/></div>}/>
+            <Route path="/pokedex/:zone" render={(props) => <Pokedex zone={props.match.params.zone}/>}/>
         </Switch>
       </section>
       <section className="footer">

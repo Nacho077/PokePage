@@ -21,7 +21,7 @@ const Home: React.FC = ():JSX.Element => {
             img: elements,
             title: 'Pokemons types',
             subtitle: 'discover the element of your favorite pokemon.',
-            to: "/"
+            to: "/types"
         },
         {
             img: abilities,

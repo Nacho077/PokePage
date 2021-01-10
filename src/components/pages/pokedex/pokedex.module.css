@@ -58,7 +58,7 @@
     transition-duration: .6s;
 }
 .container_input{
-    width: 32%;
+    width: 300px;
     border: 1px solid gray;
     border-radius: 15px;
     margin: auto;
