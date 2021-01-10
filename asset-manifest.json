@@ -1,29 +1,30 @@
 {
   "files": {
-    "main.css": "/PokePage/static/css/main.ab125f0b.chunk.css",
-    "main.js": "/PokePage/static/js/main.3862f6b8.chunk.js",
-    "main.js.map": "/PokePage/static/js/main.3862f6b8.chunk.js.map",
-    "runtime-main.js": "/PokePage/static/js/runtime-main.396e60f7.js",
-    "runtime-main.js.map": "/PokePage/static/js/runtime-main.396e60f7.js.map",
-    "static/js/2.2483813b.chunk.js": "/PokePage/static/js/2.2483813b.chunk.js",
-    "static/js/2.2483813b.chunk.js.map": "/PokePage/static/js/2.2483813b.chunk.js.map",
-    "static/js/3.dda90142.chunk.js": "/PokePage/static/js/3.dda90142.chunk.js",
-    "static/js/3.dda90142.chunk.js.map": "/PokePage/static/js/3.dda90142.chunk.js.map",
+    "main.css": "/PokePage/static/css/main.32ff1150.chunk.css",
+    "main.js": "/PokePage/static/js/main.57683566.chunk.js",
+    "main.js.map": "/PokePage/static/js/main.57683566.chunk.js.map",
+    "runtime-main.js": "/PokePage/static/js/runtime-main.b3d65699.js",
+    "runtime-main.js.map": "/PokePage/static/js/runtime-main.b3d65699.js.map",
+    "static/js/2.cb13bdaf.chunk.js": "/PokePage/static/js/2.cb13bdaf.chunk.js",
+    "static/js/2.cb13bdaf.chunk.js.map": "/PokePage/static/js/2.cb13bdaf.chunk.js.map",
+    "static/js/3.8e58c603.chunk.js": "/PokePage/static/js/3.8e58c603.chunk.js",
+    "static/js/3.8e58c603.chunk.js.map": "/PokePage/static/js/3.8e58c603.chunk.js.map",
     "index.html": "/PokePage/index.html",
-    "static/css/main.ab125f0b.chunk.css.map": "/PokePage/static/css/main.ab125f0b.chunk.css.map",
-    "static/js/2.2483813b.chunk.js.LICENSE.txt": "/PokePage/static/js/2.2483813b.chunk.js.LICENSE.txt",
+    "static/css/main.32ff1150.chunk.css.map": "/PokePage/static/css/main.32ff1150.chunk.css.map",
+    "static/js/2.cb13bdaf.chunk.js.LICENSE.txt": "/PokePage/static/js/2.cb13bdaf.chunk.js.LICENSE.txt",
     "static/media/abilities.6059bc86.jpeg": "/PokePage/static/media/abilities.6059bc86.jpeg",
     "static/media/background.3c3239f6.jpeg": "/PokePage/static/media/background.3c3239f6.jpeg",
     "static/media/background.5454000b.jpeg": "/PokePage/static/media/background.5454000b.jpeg",
     "static/media/elem.945913d3.jpeg": "/PokePage/static/media/elem.945913d3.jpeg",
     "static/media/gims.6a836f9d.png": "/PokePage/static/media/gims.6a836f9d.png",
+    "static/media/index.a0f00520.jpeg": "/PokePage/static/media/index.a0f00520.jpeg",
     "static/media/me.b9c18828.jpeg": "/PokePage/static/media/me.b9c18828.jpeg",
     "static/media/regiones.36bd40c0.png": "/PokePage/static/media/regiones.36bd40c0.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.396e60f7.js",
-    "static/js/2.2483813b.chunk.js",
-    "static/css/main.ab125f0b.chunk.css",
-    "static/js/main.3862f6b8.chunk.js"
+    "static/js/runtime-main.b3d65699.js",
+    "static/js/2.cb13bdaf.chunk.js",
+    "static/css/main.32ff1150.chunk.css",
+    "static/js/main.57683566.chunk.js"
   ]
 }
