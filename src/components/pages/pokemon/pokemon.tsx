@@ -64,13 +64,22 @@ const Pokemon:React.FC<props> = (prop) => {
     }
 
     const handleTables = (table: string) => {
-        setTable({
-            ...tables,
-            [table]: {
-                ...tables[table],
-                body: tables[table].body.length ? [] : asignVar(table)
+        let newState: TableState = {
+            variety: {
+                header: ['varieties'],
+                body: []
+            },
+            pokedex: {
+                header: ['Pokedex', 'Number'],
+                body: []
+            },
+            entries: {
+                header: ['Version', 'Description'],
+                body: []
             }
-        })
+        }
+        newState[table].body = tables[table].body.length ? [] : asignVar(table)
+        setTable(newState)
     }
 
     const asignVar = (name: string) => {
@@ -137,7 +146,12 @@ const Pokemon:React.FC<props> = (prop) => {
                         </div>
                         <div className={s.container_info}>
                             {Object.keys(tables).map(info => (
-                                <div className={s.container_table_title}>
+                                <div className={s.container_table_title}
+                                style={{
+                                    gridRow: tables[info].body.length ? '2' : 'auto',
+                                    gridColumn: tables[info].body.length ? '1 / 4' : 'auto'
+                                }}
+                                >
                                     <div className={s.title} onClick={() => handleTables(info)}>
                                         <h1>{info}</h1>
                                         <div className={s.icon} style={{transform: tables[info].body.length ? 'rotate(180deg)' : 'none'}}>

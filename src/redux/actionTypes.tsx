@@ -15,6 +15,7 @@ export const POKEDEX: string = "POKEDEX"
 export const TYPE_SUCCESS: string = "TYPE_SUCCESS"
 export const TYPE_LOADING: string = "TYPE_LOADING"
 export const TYPE_FAIL: string = "TYPE_FAIL"
+export const SPECIFY: string = "SPECIFY"
 
 export type nameUrl = {
     name: string,
@@ -97,6 +98,18 @@ export type PokemonFlavor =  {
 }
 
 export type PokedexType = nameUrl[]
+
+export type SpecifyType = {
+    damage_relations: {
+        dobule_damage_from: nameUrl[],
+        double_damage_to: nameUrl[],
+        half_damage_from: nameUrl[],
+        half_damage_to: nameUrl[],
+        no_damage_from: nameUrl[],
+        no_damage_to: nameUrl[]
+    }
+    pokemon: {pokemon: nameUrl}[]
+}
 
 // interface Loading / Fail
 export interface PokemonLoading{
@@ -193,6 +206,11 @@ export interface TypeFail{
 
 export default interface TypeLoading{
     type: typeof TYPE_FAIL,
+    payload: any
+}
+
+export default interface SpecifySuccess{
+    type: typeof SPECIFY,
     payload: any
 }
 

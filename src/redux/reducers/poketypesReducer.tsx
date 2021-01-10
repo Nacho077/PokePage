@@ -1,8 +1,9 @@
-import { TYPE_SUCCESS, TYPE_FAIL, TYPE_LOADING, nameUrl, TypeDispatches } from '../actionTypes'
+import { TYPE_SUCCESS, TYPE_FAIL, TYPE_LOADING, SPECIFY, SpecifyType, nameUrl, TypeDispatches } from '../actionTypes'
 
 interface DefaultStateTypes{
     loading: boolean,
-    types?: nameUrl[]
+    types?: nameUrl[],
+    info?: SpecifyType
 }
 
 const defaultState: DefaultStateTypes = {
@@ -23,6 +24,11 @@ const pokeTypeReducer = (state:DefaultStateTypes = defaultState, action: TypeDis
         case TYPE_FAIL:
             return{
                 loading: false
+            }
+        case SPECIFY:
+            return{
+                ...state,
+                info: action.payload
             }
         default:
             return state

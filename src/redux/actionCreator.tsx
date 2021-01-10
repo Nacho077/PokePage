@@ -17,7 +17,8 @@ import {PokemonDispatchTypes,
     POKEDEX,
     TYPE_SUCCESS,
     TYPE_FAIL,
-    TYPE_LOADING
+    TYPE_LOADING,
+    SPECIFY
 } from './actionTypes'
 
 export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<PokemonDispatchTypes>) => {
@@ -224,4 +225,12 @@ export const getTypes = () => async (dispatch: Dispatch<TypeDispatches>) => {
             payload: null
         })
     }
+}
+
+export const getSpecify = (type: string) => async (dispatch: Dispatch<TypeDispatches>) => {
+    const res = await axios.get(`https://pokeapi.co/api/v2/type/${type}`)
+    dispatch({
+        type: SPECIFY,
+        payload: res.data
+    })
 }

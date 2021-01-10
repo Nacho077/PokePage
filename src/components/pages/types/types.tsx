@@ -4,6 +4,7 @@ import { getTypes } from '../../../redux/actionCreator'
 import { RootStore } from '../../../store'
 import { Link } from 'react-router-dom'
 import Banner from '../../modules/banner/banner'
+import Specify from '../specify/specify'
 import background from './index.jpeg'
 import s from './types.module.css'
 
@@ -17,7 +18,6 @@ const Types: React.FC<PropsType> = ({selected}):JSX.Element => {
     useEffect(() => {
         dispatch(getTypes())
     }, [dispatch])
-    console.log(types, selected)
     
     return(
         <>
@@ -38,11 +38,7 @@ const Types: React.FC<PropsType> = ({selected}):JSX.Element => {
                     </div>
                 ))}
             </div>
-            {selected &&
-                <div>
-                    {selected}
-                </div>
-            }
+            {selected && <Specify selected={selected}/>}
         </>)
 }
 
