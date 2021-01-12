@@ -123,16 +123,16 @@ const Pokemon:React.FC<props> = (prop) => {
                         <div className={s.container_images}>
                             <div className={s.container_photos_title}>
                                 <div className={s.empty}></div>
-                                <div className={s.container_title}><h3>Male</h3></div>
-                                <div className={s.container_title}><h3>Female</h3></div>
-                                <div className={s.container_title}><h3>Default {mode}</h3></div>
+                                <div className={s.container_title}>Male</div>
+                                <div className={s.container_title}>Female</div>
+                                <div className={`${s.container_title} ${s.center}`}>Default {mode}</div>
                                 <div className={s.container_photo}>
                                     <img src={pokemon?.sprites[`${mode}_default`]} alt={`${mode}_male`}/>
                                 </div>
                                 <div className={s.container_photo}>
                                     <img src={pokemon?.sprites[`${mode}_female`] || pokemon?.sprites[`${mode}_default`]} alt={`${mode}_female`}/>
                                 </div>
-                                <div className={s.container_title}><h3>Shiny {mode}</h3></div>
+                                <div className={`${s.container_title} ${s.center}`}>Shiny {mode}</div>
                                 <div className={s.container_photo}>
                                     <img src={pokemon?.sprites[`${mode}_shiny`]} alt={`${mode}_shiny_male`}/>
                                 </div>
@@ -145,7 +145,7 @@ const Pokemon:React.FC<props> = (prop) => {
                             </div>
                         </div>
                         <div className={s.container_info}>
-                            {Object.keys(tables).map(info => (
+                            {/*Object.keys(tables).map(info => (
                                 <div className={s.container_table_title}
                                 style={{
                                     gridRow: tables[info].body.length ? '2' : 'auto',
@@ -167,9 +167,26 @@ const Pokemon:React.FC<props> = (prop) => {
                                         />
                                     </div>
                                 </div>
+                            ))*/}
+                            {Object.keys(tables).map(info => (
+                                <div className={s.container_titles} onClick={() => handleTables(info)}>
+                                    <div className={s.title}>
+                                        <div>{info.replace(/\b\w/g, a => a.toUpperCase())}</div>
+                                        <div className={`${s.icon}`}><KeyboardArrowDownIcon/></div>
+                                    </div>
+                                </div>
                             ))}
-                            
                         </div>
+                            {Object.keys(tables).map(table => (
+                                tables[table].body.length ? (
+                                    <div className={s.container_table} style={{width: table === 'entries' ? '90%' : '300px'}}>
+                                        <Table
+                                        headers={tables[table].header}
+                                        body={tables[table].body}
+                                        />
+                                    </div>
+                                ): ('')
+                            ))}
                     </div>
                 ) : (<div className={s.loading}>Not pokemons here</div>)
             )}

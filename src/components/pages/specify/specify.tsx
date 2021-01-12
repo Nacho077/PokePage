@@ -33,8 +33,9 @@ const Specify: React.FC<SpecifyProps> = ({selected}): JSX.Element => {
         let rel = relation.split("_")[0]
         let objetive = relation.split("_")[relation.split("_").length] === 'to' ? 'caused' : 'received'
         if(rel === 'double') return 'X2'
-        if(rel === 'half') return '1/2'
-        if(rel === 'no') return `No damage ${objetive}`
+        else if(rel === 'half') return '1/2'
+        else if(rel === 'no') return `No damage ${objetive}`
+        else return 'X1'
     }
 
     const handlePage = (num: number) => {
