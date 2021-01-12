@@ -1,8 +1,11 @@
 import { Dispatch } from 'redux'
 import axios from 'axios'
-import {PokemonDispatchTypes,
+import {
+    nameUrl,
+    PokemonDispatchTypes,
     SpeciesDispatches,
     TypeDispatches,
+    PokeTypeDispatches,
     POKEMON_LOADING,
     POKEMON_FAIL,
     POKEMON_SUCCESS,
@@ -18,7 +21,10 @@ import {PokemonDispatchTypes,
     TYPE_SUCCESS,
     TYPE_FAIL,
     TYPE_LOADING,
-    SPECIFY
+    SPECIFY,
+    POKEMON_TYPES_SUCCESS,
+    POKEMON_TYPES_LOADING,
+    POKEMON_TYPES_FAIL
 } from './actionTypes'
 
 export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<PokemonDispatchTypes>) => {
@@ -233,4 +239,32 @@ export const getSpecify = (type: string) => async (dispatch: Dispatch<TypeDispat
         type: SPECIFY,
         payload: res.data
     })
+}
+
+export const pokemonsType = (pok: {pokemon: nameUrl}[] | null | undefined, type: string | null) => async (dispatch: Dispatch<PokeTypeDispatches>) => {
+    try{
+        dispatch({
+            type: POKEMON_TYPES_LOADING,
+            payload: null
+        })
+        let call: any = false
+        var pokemons = []
+        if(pok === null){
+            call = await axios.get(`https://pokeapi.co/api/v2/type/${type}`)
+        }
+        for(let i = 0; i < 9; i++){
+            let res = await axios.get(call ? (call?.data.pokemon[i].pokemon.url) : (pok ? pok[i].pokemon.url : ''))
+            pokemons.push(res.data)
+        }
+        dispatch({
+            type: POKEMON_TYPES_SUCCESS,
+            payload: pokemons
+        })
+    }catch(e){
+        console.log(e)
+        dispatch({
+            type: POKEMON_TYPES_FAIL,
+            payload: null
+        })
+    }
 }

@@ -1,9 +1,22 @@
-import { TYPE_SUCCESS, TYPE_FAIL, TYPE_LOADING, SPECIFY, SpecifyType, nameUrl, TypeDispatches } from '../actionTypes'
+import {
+    POKEMON_TYPES_LOADING,
+    POKEMON_TYPES_SUCCESS,
+    POKEMON_TYPES_FAIL,
+    TYPE_SUCCESS,
+    TYPE_FAIL,
+    TYPE_LOADING,
+    SPECIFY,
+    SpecifyType,
+    nameUrl,
+    TypeDispatches,
+    PokemonData
+} from '../actionTypes'
 
 interface DefaultStateTypes{
     loading: boolean,
     types?: nameUrl[],
-    info?: SpecifyType
+    info?: SpecifyType,
+    pokemons?: PokemonData[]
 }
 
 const defaultState: DefaultStateTypes = {
@@ -18,6 +31,7 @@ const pokeTypeReducer = (state:DefaultStateTypes = defaultState, action: TypeDis
             }
         case TYPE_SUCCESS:
             return{
+                ...state,
                 loading: false,
                 types: action.payload
             }
@@ -29,6 +43,21 @@ const pokeTypeReducer = (state:DefaultStateTypes = defaultState, action: TypeDis
             return{
                 ...state,
                 info: action.payload
+            }
+        case POKEMON_TYPES_LOADING:
+            return{
+                ...state,
+                pokemons: []
+            }
+        case POKEMON_TYPES_SUCCESS:
+            return{
+                ...state,
+                pokemons: action.payload
+            }
+        case POKEMON_TYPES_FAIL:
+            return{
+                ...state,
+                pokemons: []
             }
         default:
             return state

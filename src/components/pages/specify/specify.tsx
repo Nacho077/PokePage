@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootStore } from '../../../store'
-import { getSpecify } from '../../../redux/actionCreator'
+import { getSpecify, pokemonsType } from '../../../redux/actionCreator'
 import PokeCard from '../../modules/pokeCard/pokeCard'
 import Pages from '../../modules/pages/pages'
 import s from './specify.module.css'
@@ -11,15 +11,15 @@ type SpecifyProps = {
 }
 
 const Specify: React.FC<SpecifyProps> = ({selected}): JSX.Element => {
+    const [page, setPage] = useState(1)
     const dispatch = useDispatch() 
     const info = useSelector((state: RootStore) => state.type.info)
     const types = useSelector((state: RootStore) => state.type.types)
+    const pokemons = useSelector((state: RootStore) => state.type.pokemons)
     useEffect(() => {
         dispatch(getSpecify(selected))
+        dispatch(pokemonsType(null, selected))
     }, [dispatch, selected])
-    console.log(info)
-    console.log(types)
-
     const resultTable = (pokeType: string, relation: string) => {
         const damages: string [] = Object.keys(info ? info.damage_relations : {})
         for(let i = 0; i < damages.length; i++){
@@ -37,19 +37,19 @@ const Specify: React.FC<SpecifyProps> = ({selected}): JSX.Element => {
         if(rel === 'no') return `No damage ${objetive}`
     }
 
+    const handlePage = (num: number) => {
+        dispatch(pokemonsType(info?.pokemon.slice((num - 1) * 9, num * 9), null))
+        setPage(num)
+    }
+
     return(
         <>
-            <button onClick={() => resultTable('grass', 'to')}/>
-            <h1>{selected.replace(/\b\w/g, a => a.toUpperCase())}</h1>
-            <table>
+            <table className={s.table}>
                 <thead>
                     <tr>
                         <th></th>
-                        {/* {info ? Object.keys(info.damage_relations).map(relation => relation.replace(/\b\w/g, a => a.toUpperCase()).split("_").join(" ")).map(relation => (
-                            <th>{relation}</th>
-                        )) : null} */}
-                        <th>Damage dealer</th>
-                        <th>Damege received</th>
+                        <th>Caused damage</th>
+                        <th>Damage received</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,11 +63,29 @@ const Specify: React.FC<SpecifyProps> = ({selected}): JSX.Element => {
                 </tbody>
             </table>
             <div className={s.container_pokemons}>
-                        {info?.pokemon.slice(0, 10).map(poke => (
-                            <div className={s.pokemon}>
-                                hi
-                            </div>
-                        ))}
+                {pokemons?.length ? (
+                    pokemons.map(poke => (
+                        <div className={s.pokemon} key={poke.name}>
+                            <PokeCard
+                            abilities={poke.abilities}
+                            id={poke.id}
+                            moves={poke.moves}
+                            name={poke.name}
+                            sprites={poke.sprites}
+                            stats={poke.stats}
+                            types={poke.types}
+                            species={poke.species}
+                            />
+                        </div>
+                    ))
+                    ) : <div className={s.loading}>Loading...</div>}
+            </div>
+            <div>
+                <Pages
+                thisPage={page}
+                lastPage={info ? info.pokemon.length / 9 : 1}
+                changePage={handlePage}
+                />
             </div>
         </>
     )

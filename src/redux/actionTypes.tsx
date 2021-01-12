@@ -16,6 +16,9 @@ export const TYPE_SUCCESS: string = "TYPE_SUCCESS"
 export const TYPE_LOADING: string = "TYPE_LOADING"
 export const TYPE_FAIL: string = "TYPE_FAIL"
 export const SPECIFY: string = "SPECIFY"
+export const POKEMON_TYPES_SUCCESS: string = "POKEMON_TYPES"
+export const POKEMON_TYPES_LOADING: string = "POKEMON_TYPES_LOADING"
+export const POKEMON_TYPES_FAIL: string = "POKEMON_TYPES_FAIL"
 
 export type nameUrl = {
     name: string,
@@ -205,14 +208,31 @@ export interface TypeFail{
     payload: any
 }
 
-export default interface TypeLoading{
+export interface TypeLoading{
     type: typeof TYPE_FAIL,
     payload: any
 }
 
-export default interface SpecifySuccess{
+export interface SpecifySuccess{
     type: typeof SPECIFY,
     payload: any
 }
 
 export type TypeDispatches = TypeSuccess | TypeFail | TypeLoading
+
+export interface pokeTypeLoading{
+    type: typeof POKEMON_TYPES_LOADING,
+    payload: any
+}
+
+export interface pokeTypeSuccess{
+    type: typeof POKEMON_TYPES_SUCCESS,
+    payload: PokemonData[]
+}
+
+export interface pokeTypeFail{
+    type: typeof POKEMON_TYPES_FAIL,
+    payload: any
+}
+
+export type  PokeTypeDispatches = pokeTypeLoading | pokeTypeSuccess | pokeTypeFail

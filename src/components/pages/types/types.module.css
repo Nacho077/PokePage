@@ -14,6 +14,9 @@
     color: var(--color, black);
     box-shadow: 3px 3px 20px var(--back, gray);
 }
+/* .title{
+
+} */
 .normal{
     --back: gray;
     --color: white;
@@ -87,4 +90,10 @@
 .shadow{
     --back: #707070;
     --color: white;
+}
+
+@media (max-width: 760px){
+    .container_types{
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

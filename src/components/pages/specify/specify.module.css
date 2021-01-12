@@ -1,0 +1,23 @@
+.table{
+    border-collapse: collapse;
+}
+.table>tbody>tr>td{
+    line-height: 60px;
+}
+.table>tbody>tr:nth-child(2n){
+    background-color: gray;
+}
+.container_pokemons{
+    width: 95%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px 20px;
+}
+
+@media (max-width: 760px){
+    .container_pokemons{
+        width: 85%;
+        grid-template-columns: 1fr;
+    }
+}

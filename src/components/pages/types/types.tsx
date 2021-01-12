@@ -38,7 +38,12 @@ const Types: React.FC<PropsType> = ({selected}):JSX.Element => {
                     </div>
                 ))}
             </div>
-            {selected && <Specify selected={selected}/>}
+            {selected && (
+            <div>
+                <h1 className={`${s[selected]} ${s.title}`}>{selected.replace(/\b\w/g, a => a.toUpperCase())}</h1>
+                <Specify selected={selected}/>
+            </div>
+            )}
         </>)
 }
 
