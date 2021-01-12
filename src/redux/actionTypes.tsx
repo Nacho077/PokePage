@@ -101,7 +101,8 @@ export type PokedexType = nameUrl[]
 
 export type SpecifyType = {
     damage_relations: {
-        dobule_damage_from: nameUrl[],
+        [key: string]: nameUrl[]
+        double_damage_from: nameUrl[],
         double_damage_to: nameUrl[],
         half_damage_from: nameUrl[],
         half_damage_to: nameUrl[],
