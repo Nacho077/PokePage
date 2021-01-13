@@ -14,9 +14,6 @@
     color: var(--color, black);
     box-shadow: 3px 3px 20px var(--back, gray);
 }
-/* .title{
-
-} */
 .normal{
     --back: gray;
     --color: white;
@@ -82,14 +79,6 @@
 }
 .fairy{
     --back: #fdb9e9;
-}
-.unknown{
-    --back: gray;
-    --color: white;
-} 
-.shadow{
-    --back: #707070;
-    --color: white;
 }
 
 @media (max-width: 760px){

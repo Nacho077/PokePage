@@ -11,8 +11,11 @@
     background-color: rgb(209, 243, 255);
     border-radius: 5px;
     border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
 }
-.table>tbody>tr>td{
+.table > thead > tr,
+.table > tbody > tr
+{
     line-height: 50px;
 }
 .container_pokemons{
@@ -23,9 +26,13 @@
     grid-gap: 25px 20px;
 }
 
+
 @media (max-width: 760px){
     .container_pokemons{
         width: 85%;
         grid-template-columns: 1fr;
+    }
+    .table{
+        width: 98%;
     }
 }

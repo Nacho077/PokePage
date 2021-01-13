@@ -20,6 +20,7 @@ const Specify: React.FC<SpecifyProps> = ({selected}): JSX.Element => {
         dispatch(getSpecify(selected))
         dispatch(pokemonsType(null, selected))
     }, [dispatch, selected])
+
     const resultTable = (pokeType: string, relation: string) => {
         const damages: string [] = Object.keys(info ? info.damage_relations : {})
         for(let i = 0; i < damages.length; i++){
@@ -27,6 +28,7 @@ const Specify: React.FC<SpecifyProps> = ({selected}): JSX.Element => {
             let res = info?.damage_relations[dam].map(rel => rel.name === pokeType).includes(true)
             if(res) return asignTable(dam)
         }
+        return 'X1'
     }
 
     const asignTable = (relation: string) => {
@@ -35,7 +37,6 @@ const Specify: React.FC<SpecifyProps> = ({selected}): JSX.Element => {
         if(rel === 'double') return 'X2'
         else if(rel === 'half') return '1/2'
         else if(rel === 'no') return `No damage ${objetive}`
-        else return 'X1'
     }
 
     const handlePage = (num: number) => {

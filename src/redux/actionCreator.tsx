@@ -223,7 +223,7 @@ export const getTypes = () => async (dispatch: Dispatch<TypeDispatches>) => {
         }
         dispatch({
             type: TYPE_SUCCESS,
-            payload: types
+            payload: types.filter(t => t.name !== 'shadow' && t.name !== 'unknown')
         })
     }catch{
         dispatch({
