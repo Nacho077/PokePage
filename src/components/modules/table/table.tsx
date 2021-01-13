@@ -16,7 +16,7 @@ export type TableBody = {
 
 const Table: React.FC<TableProps> = ({headers, body}): JSX.Element => {
     return(
-        <table className={s.container_table} style={{border: body.length ? '1px solid gray' : 'none'}}>
+        <table className={s.container_table}>
             <thead className={s.thead}>
                 <tr style={{border: body.length ? '1px solid gray' : 'none'}}>
                     {headers.map(header=> (

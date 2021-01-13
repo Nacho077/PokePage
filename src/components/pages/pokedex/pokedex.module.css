@@ -20,7 +20,9 @@
 }
 .pokedex{
     width: 90%;
-    background-color: green;
+    background-color: lightskyblue;
+    border: 1px solid black;
+    color: black;
     font-size: 18px;
     margin: 5px;
     border-radius: 5px;
