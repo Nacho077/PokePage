@@ -30,7 +30,7 @@ const Pokedex: React.FC<pokedexType> = ({zone}): JSX.Element => {
     useEffect(() => {
         zone ? dispatch(specifiPokedex(zone)) :  pages === 1 ? dispatch(startPokedex()) : setMenu(false)
         !pokedex.pokedex && dispatch(getPokedex())
-    }, [dispatch, pages, zone])
+    }, [dispatch, pages, zone, pokedex.pokedex])
 
     const changePages = (num: number) => {
         setPages(num)
@@ -107,7 +107,7 @@ const Pokedex: React.FC<pokedexType> = ({zone}): JSX.Element => {
                 ><SearchIcon/></div>
             </div>
             <div>
-                {pokedex.loading ? (<div className={s.loading}>Loading...</div>) : (
+                {pokedex.loading ? (<div className="loading">Loading...</div>) : (
                     pokedex.pokemons ? (<div className={s.container_pokedex}>{
                         pokedex.pokemons.map(pokemon => (
                             <div className={s.container_pokemon} key={pokemon.name}>
@@ -123,7 +123,7 @@ const Pokedex: React.FC<pokedexType> = ({zone}): JSX.Element => {
                                 />
                             </div>
                         ))
-                        }</div>) : (<div className={s.loading}>No pokemons here</div>)
+                        }</div>) : (<div className="loading">No pokemons here</div>)
                 )}
             </div>
             <Pages

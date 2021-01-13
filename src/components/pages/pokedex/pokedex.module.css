@@ -6,12 +6,6 @@
     column-gap: 30px;
     row-gap: 40px;
 }
-.loading{
-    width: 50%;
-    margin: 5% auto;
-    color: gray;
-    font-size: 25px;
-}
 .container_pokedexes{
     display: unset;
     display: grid;

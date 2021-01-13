@@ -27,3 +27,8 @@
 .container_page{
   background-color: rgb(220, 245, 255, .6);
 }
+.loading{
+  font-size: 22px;
+  color: gray;
+  margin: 20px auto;
+}

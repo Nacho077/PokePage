@@ -116,7 +116,7 @@ const Pokemon:React.FC<props> = (prop) => {
             <div className={s.container_nav}>
                 <Navbar/>
             </div>
-            {loading ? (<div className={s.loading}>Loading</div>) : (
+            {loading ? (<div className="loading">Loading</div>) : (
                 pokemon ? (
                     <div className={s.container_pokemon}>
                         <h1>{pokemon.name.replace(/\b\w/g, a => a.toUpperCase())}</h1>
@@ -188,7 +188,7 @@ const Pokemon:React.FC<props> = (prop) => {
                                 ): ('')
                             ))}
                     </div>
-                ) : (<div className={s.loading}>Not pokemons here</div>)
+                ) : (<div className="loading">Not pokemons here</div>)
             )}
         </div>
     )

@@ -80,7 +80,7 @@ const Specify: React.FC<SpecifyProps> = ({selected}): JSX.Element => {
                             />
                         </div>
                     ))
-                    ) : <div className={s.loading}>Loading...</div>}
+                    ) : <div className="loading">Loading...</div>}
             </div>
             <div>
                 <Pages

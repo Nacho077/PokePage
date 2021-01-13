@@ -1,8 +1,17 @@
-import { AnimesDispatches, animesType, ANIMES_FAIL, ANIMES_LOADING, ANIMES_SUCCESS } from '../actionTypes'
+import {
+    AnimesDispatches,
+    animesType,
+    animeInfo,
+    ANIMES_FAIL,
+    ANIMES_LOADING,
+    ANIMES_SUCCESS,
+    ANIMES_INFO
+} from '../actionTypes'
 
 interface DefaultStateAnimes{
     loading: boolean,
-    animes?: animesType
+    animes?: animesType,
+    info?: animeInfo
 }
 
 const defaultState: DefaultStateAnimes = {
@@ -23,6 +32,11 @@ const animesReducer = (state: DefaultStateAnimes = defaultState, action: AnimesD
             return{
                 loading: false,
                 animes: action.payload
+            }
+        case ANIMES_INFO:
+            return{
+                loading: false,
+                info: action.payload
             }
         default:
             return state

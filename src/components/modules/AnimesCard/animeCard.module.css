@@ -1,25 +1,60 @@
 .container_all{
-    display: flex;
-    width: 90%;
-    margin: 20px auto;
+    position: relative;
+    width: 250px;
 }
-.container_image{
+.container_main{
+    width: 250px;
+    margin: 15px;
+    height: 325px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    position: relative;
     overflow: hidden;
-    height: 200px;
-    width: 200px;
-    background: transparent center center no-repeat;
+    filter: brightness(90%);
 }
-.container_image > img{
-    display: block;
-    height: 100%;
+.container_main:hover{
+    cursor: pointer;
+    /* filter: brightness(0%); */
 }
 .container_info{
-    width: 50%;
+    opacity: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 255, .8);
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    margin: 0 15px;
+    top: 100px;
+    visibility: hidden;
+    overflow-y: auto;
+    border-radius: 10px;
+    color: white;
+}
+.info{
+    height: 80%;
     display: flex;
     flex-direction: column;
-    height: 200px;
-    width: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow-y: hidden;
 }
-.container_info > p{
-    color: gray;
+.container_all:hover .container_info{
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+    z-index: 1100;
+}
+.container_info > a{
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 15px;
+    left: 25%;
+}
+.container_info > a:hover{
+    box-shadow: 5px 5px 10px gray;
+    bottom: 20px;
 }

@@ -1,0 +1,12 @@
+.container_animes{
+    width: 90%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(4, calc(100% / 4))
+}
+
+@media (max-width: 760px){
+    .container_animes{
+        grid-template-columns: 1fr;
+    }
+}

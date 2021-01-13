@@ -5,6 +5,7 @@ import { getAnimes } from '../../../redux/actionCreator'
 import Banner from '../../modules/banner/banner'
 import AnimeCard from '../../modules/AnimesCard/animeCard'
 import background from './background.jpeg'
+import s from './animes.module.css'
 
 const Animes: React.FC = (): JSX.Element => {
     const dispatch = useDispatch()
@@ -12,7 +13,6 @@ const Animes: React.FC = (): JSX.Element => {
     useEffect(() => {
         dispatch(getAnimes(1))
     }, [dispatch])
-    console.log(animes)
 
     return(
         <>
@@ -24,11 +24,16 @@ const Animes: React.FC = (): JSX.Element => {
             nav={true}
             top='10vh'
             />
-            {animes.animes?.results.map(anime => (
-                <div key={anime.mal_id}>
-                    <AnimeCard anime={anime}/>
-                </div>
-            ))}
+            {animes.loading && 
+                <div className="loading">Loading...</div>
+            }
+            <div className={s.container_animes}>
+                {animes.animes?.results.map(anime => (
+                    <div key={anime.mal_id}>
+                        <AnimeCard anime={anime}/>
+                    </div>
+                ))}
+            </div>
         </>
     )
 }

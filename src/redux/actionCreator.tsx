@@ -28,7 +28,8 @@ import {
     POKEMON_TYPES_FAIL,
     ANIMES_SUCCESS,
     ANIMES_LOADING,
-    ANIMES_FAIL
+    ANIMES_FAIL,
+    ANIMES_INFO
 } from './actionTypes'
 
 export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<PokemonDispatchTypes>) => {
@@ -290,4 +291,16 @@ export const getAnimes = (page: number) => async (dispatch: Dispatch<AnimesDispa
             payload: null
         })
     }
+}
+
+export const getAnimesInfo = (id: number) => async (dispatch: Dispatch<AnimesDispatches>) => {
+    dispatch({
+        type: ANIMES_LOADING,
+        payload: null
+    })
+    const res = await axios.get(`https://api.jikan.moe/v3/anime/${id}`)
+    dispatch({
+        type: ANIMES_INFO,
+        payload: res.data
+    })
 }

@@ -22,6 +22,7 @@ export const POKEMON_TYPES_FAIL: string = "POKEMON_TYPES_FAIL"
 export const ANIMES_LOADING: string = "ANIMES_LOADING"
 export const ANIMES_FAIL: string = "ANIMES_FAIL"
 export const ANIMES_SUCCESS: string = "ANIMES_SUCCESS"
+export const ANIMES_INFO: string = "ANIMES_INFO"
 
 export type nameUrl = {
     name: string,
@@ -128,6 +129,28 @@ export type anime = {
     title: string,
     image_url: string,
     synopsis: string,
+}
+
+export type animeInfo = {
+    image_url: string,
+    trailer_url: string,
+    title: string,
+    episodes: number,
+    aired: {
+        prop:{
+            from:date,
+            to: date
+        }
+    },
+    score: number,
+    scored_by: number,
+    synopsis: string
+}
+
+export type date = {
+    day: number,
+    month: number,
+    year: number
 }
 
 // interface Loading / Fail
@@ -270,6 +293,11 @@ export interface animesLoading{
 export interface animesFail{
     type: typeof ANIMES_FAIL,
     payload: any
+}
+
+export interface infoAnime{
+    type: typeof ANIMES_INFO,
+    payload: animeInfo
 }
 
 export type AnimesDispatches = animesSuccess | animesLoading | animesFail
