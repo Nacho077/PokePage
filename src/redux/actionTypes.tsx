@@ -19,6 +19,9 @@ export const SPECIFY: string = "SPECIFY"
 export const POKEMON_TYPES_SUCCESS: string = "POKEMON_TYPES"
 export const POKEMON_TYPES_LOADING: string = "POKEMON_TYPES_LOADING"
 export const POKEMON_TYPES_FAIL: string = "POKEMON_TYPES_FAIL"
+export const ANIMES_LOADING: string = "ANIMES_LOADING"
+export const ANIMES_FAIL: string = "ANIMES_FAIL"
+export const ANIMES_SUCCESS: string = "ANIMES_SUCCESS"
 
 export type nameUrl = {
     name: string,
@@ -115,6 +118,18 @@ export type SpecifyType = {
     pokemon: {pokemon: nameUrl}[]
 }
 
+export type animesType = {
+    last_page: number,
+    results: anime[]
+}
+
+export type anime = {
+    mal_id: number,
+    title: string,
+    image_url: string,
+    synopsis: string,
+}
+
 // interface Loading / Fail
 export interface PokemonLoading{
     type: typeof POKEMON_LOADING,
@@ -134,6 +149,7 @@ export interface PokemonSuccess {
 
 export type PokemonDispatchTypes = PokemonSuccess | PokemonLoading | PokemonFail
 
+// /pokedex
 export interface HomeLoading{
     type: typeof HOME_LOADING,
     payload: any
@@ -198,6 +214,7 @@ export interface InfoSuccess{
 
 export type InfoDispatch = InfoLoading | InfoFail | InfoFail
 
+// /type
 export interface TypeSuccess{
     type: typeof TYPE_SUCCESS,
     payload: nameUrl[]
@@ -213,6 +230,8 @@ export interface TypeLoading{
     payload: any
 }
 
+
+// /type/:selected
 export interface SpecifySuccess{
     type: typeof SPECIFY,
     payload: any
@@ -236,3 +255,21 @@ export interface pokeTypeFail{
 }
 
 export type  PokeTypeDispatches = pokeTypeLoading | pokeTypeSuccess | pokeTypeFail
+
+// /animes
+export interface animesSuccess{
+    type: typeof ANIMES_SUCCESS,
+    payload: animesType
+}
+
+export interface animesLoading{
+    type: typeof ANIMES_LOADING,
+    payload: any
+}
+
+export interface animesFail{
+    type: typeof ANIMES_FAIL,
+    payload: any
+}
+
+export type AnimesDispatches = animesSuccess | animesLoading | animesFail

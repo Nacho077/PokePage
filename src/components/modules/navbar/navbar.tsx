@@ -30,7 +30,7 @@ const Navbar: React.FC = (): JSX.Element => {
         },
         {
             title: "Anime",
-            to: "/"
+            to: "/animes"
         }
     ]
 

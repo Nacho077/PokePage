@@ -5,6 +5,7 @@ import Opening from './components/pages/opening/opening'
 import Pokedex from './components/pages/pokedex/pokedex'
 import Pokemon from './components/pages/pokemon/pokemon'
 import Types from './components/pages/types/types'
+import Animes from './components/pages/animes/animes'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css';
 
@@ -17,9 +18,10 @@ const App: React.FC = ():JSX.Element => {
         <Switch>
             <Route path="/home" component={Home}/>
             <Route exact path="/types" component={Types}/>
-            <Route path="/type/:type" render={(props) => <Types selected={props.match.params.type}/>}/>
+            <Route exact path="/animes" component={Animes}/>
             <Route exact path="/pokedex" component={Pokedex}/>
             <Route path="/pokemon/:name" component={Pokemon}/>
+            <Route path="/type/:type" render={(props) => <Types selected={props.match.params.type}/>}/>
             <Route path="/pokedex/:zone" render={(props) => <Pokedex zone={props.match.params.zone}/>}/>
         </Switch>
       </section>

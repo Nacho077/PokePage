@@ -5,6 +5,7 @@ import {
     PokemonDispatchTypes,
     SpeciesDispatches,
     TypeDispatches,
+    AnimesDispatches,
     PokeTypeDispatches,
     POKEMON_LOADING,
     POKEMON_FAIL,
@@ -24,7 +25,10 @@ import {
     SPECIFY,
     POKEMON_TYPES_SUCCESS,
     POKEMON_TYPES_LOADING,
-    POKEMON_TYPES_FAIL
+    POKEMON_TYPES_FAIL,
+    ANIMES_SUCCESS,
+    ANIMES_LOADING,
+    ANIMES_FAIL
 } from './actionTypes'
 
 export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<PokemonDispatchTypes>) => {
@@ -264,6 +268,25 @@ export const pokemonsType = (pok: {pokemon: nameUrl}[] | null | undefined, type:
         console.log(e)
         dispatch({
             type: POKEMON_TYPES_FAIL,
+            payload: null
+        })
+    }
+}
+
+export const getAnimes = (page: number) => async (dispatch: Dispatch<AnimesDispatches>) => {
+    try{
+        dispatch({
+            type: ANIMES_LOADING,
+            payload: null
+        })
+        const res = await axios.get(`https://api.jikan.moe/v3/search/anime?q=pokemon&page=${page}`)
+        dispatch({
+            type: ANIMES_SUCCESS,
+            payload: res.data
+        })
+    }catch{
+        dispatch({
+            type: ANIMES_FAIL,
             payload: null
         })
     }
