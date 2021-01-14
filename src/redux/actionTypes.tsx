@@ -133,7 +133,6 @@ export type anime = {
 
 export type animeInfo = {
     image_url: string,
-    trailer_url: string,
     title: string,
     episodes: number,
     aired: {
@@ -144,7 +143,10 @@ export type animeInfo = {
     },
     score: number,
     scored_by: number,
-    synopsis: string
+    synopsis: string,
+    rank: number,
+    rating: string,
+    popularity: number
 }
 
 export type date = {
