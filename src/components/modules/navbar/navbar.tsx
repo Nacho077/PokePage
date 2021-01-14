@@ -25,11 +25,7 @@ const Navbar: React.FC = (): JSX.Element => {
             to: "/pokedex"
         },
         {
-            title: "Games",
-            to: "/"
-        },
-        {
-            title: "Anime",
+            title: "Animes and Movies",
             to: "/animes"
         }
     ]
