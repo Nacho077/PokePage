@@ -7,6 +7,7 @@ import Pokemon from './components/pages/pokemon/pokemon'
 import Types from './components/pages/types/types'
 import Animes from './components/pages/animes/animes'
 import AnimesInfo from './components/pages/animes/id/id'
+import Gym from './components/pages/gym/gym'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css';
 
@@ -17,6 +18,7 @@ const App: React.FC = ():JSX.Element => {
         <Route exact path="/PokePage" render={() => <Redirect to="/"/>}/>
       <section className="container_page">
         <Switch>
+            <Route path="/gym" component={Gym}/>
             <Route path="/home" component={Home}/>
             <Route exact path="/types" component={Types}/>
             <Route exact path="/animes" component={Animes}/>

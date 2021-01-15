@@ -33,7 +33,7 @@ const Home: React.FC = ():JSX.Element => {
             img: gims,
             title: 'Have you already discovered your ideal gym?',
             subtitle: "If you haven't done it yet, enter here and find out which one goes with your personality.",
-            to: "/"
+            to: "/gym"
         },
         {
             img: regions,

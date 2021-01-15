@@ -1,0 +1,41 @@
+.title{
+    margin: 50px auto;
+    font-size: 36px;
+}
+.container_main > img{
+    width: 40%;
+}
+.subtitle{
+    font-size: 20px;
+    margin: 40px 0;
+}
+.container_quotes{
+    display: flex;
+    justify-content: space-between;
+}
+.quote{
+    color: #a8b741;
+}
+.first{
+    /* animacion re piola */
+    transform: scaleX(-1);
+}
+.text{
+    width: 60%;
+    color: gray;
+    font-size: 20px;
+}
+.no_margin{
+    margin-bottom: 0;
+    padding-bottom: 40px;
+}
+
+@media (max-width: 760px){
+    .container_quotes{
+        flex-direction: column;
+    }
+    .text{
+        margin: auto;
+        width: 100%;
+    }
+}
