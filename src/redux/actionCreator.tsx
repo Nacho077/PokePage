@@ -7,6 +7,7 @@ import {
     TypeDispatches,
     AnimesDispatches,
     PokeTypeDispatches,
+    regionDispatches,
     POKEMON_LOADING,
     POKEMON_FAIL,
     POKEMON_SUCCESS,
@@ -29,7 +30,11 @@ import {
     ANIMES_SUCCESS,
     ANIMES_LOADING,
     ANIMES_FAIL,
-    ANIMES_INFO
+    ANIMES_INFO,
+    REG_LOADING,
+    REG_SUCCESS,
+    REG_FAIL,
+    REGION_INFO
 } from './actionTypes'
 
 export const GetPokemon = (pokemon: string) => async (dispatch: Dispatch<PokemonDispatchTypes>) => {
@@ -301,6 +306,33 @@ export const getAnimesInfo = (id: number) => async (dispatch: Dispatch<AnimesDis
     const res = await axios.get(`https://api.jikan.moe/v3/anime/${id}`)
     dispatch({
         type: ANIMES_INFO,
+        payload: res.data
+    })
+}
+
+export const getRegions = () => async (dispatch: Dispatch<regionDispatches>) => {
+    try{
+        dispatch({
+            type: REG_LOADING,
+            payload: null
+        })
+        const res = await axios.get('https://pokeapi.co/api/v2/region')
+        dispatch({
+            type: REG_SUCCESS,
+            payload: res.data
+        })
+    }catch{
+        dispatch({
+            type: REG_FAIL,
+            payload: null
+        })
+    }
+}
+
+export const getRegionInfo = (id: string) => async (dispatch: Dispatch<regionDispatches>) => {
+    const res = await axios.get(`https://pokeapi.co/api/v2/region/${id}`)
+    dispatch({
+        type: REGION_INFO,
         payload: res.data
     })
 }

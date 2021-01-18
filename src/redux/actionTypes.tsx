@@ -23,6 +23,10 @@ export const ANIMES_LOADING: string = "ANIMES_LOADING"
 export const ANIMES_FAIL: string = "ANIMES_FAIL"
 export const ANIMES_SUCCESS: string = "ANIMES_SUCCESS"
 export const ANIMES_INFO: string = "ANIMES_INFO"
+export const REG_SUCCESS: string = "REG_SUCCESS"
+export const REG_LOADING: string = "REG_LOADING"
+export const REG_FAIL: string = "REG_FAIL"
+export const REGION_INFO: string = "REGION_INFO"
 
 export type nameUrl = {
     name: string,
@@ -153,6 +157,18 @@ export type date = {
     day: number,
     month: number,
     year: number
+}
+
+export type regions = {
+    results: nameUrl[]
+}
+
+export type region = {
+    id: number,
+    locations: nameUrl[],
+    name: string,
+    pokedexes: nameUrl[],
+    version_groups: nameUrl[]
 }
 
 // interface Loading / Fail
@@ -303,3 +319,26 @@ export interface infoAnime{
 }
 
 export type AnimesDispatches = animesSuccess | animesLoading | animesFail
+
+//regions
+export interface regionsLoading{
+    type: typeof REG_LOADING,
+    payload: any
+}
+
+export interface regionsSuccess{
+    type: typeof REG_SUCCESS,
+    payload: regions
+}
+
+export interface regionsFail{
+    type: typeof REG_FAIL,
+    payload: any
+}
+
+export interface regionInfo{
+    type: typeof REGION_INFO,
+    payload: region
+}
+
+export type regionDispatches = regionsLoading | regionsSuccess | regionsFail | regionInfo

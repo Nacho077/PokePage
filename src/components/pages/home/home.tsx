@@ -3,7 +3,6 @@ import background from './background.jpeg'
 import Banner from '../../modules/banner/banner'
 import SectionCard from '../../modules/sectionCard/sectionCard'
 import elements from './elem.jpeg'
-import abilities from './abilities.jpeg'
 import gims from './gims.png'
 import regions from './regiones.png'
 import s from './home.module.css'
@@ -24,12 +23,6 @@ const Home: React.FC = ():JSX.Element => {
             to: "/types"
         },
         {
-            img: abilities,
-            title: 'Abilities',
-            subtitle: 'Did you know that two fire Pokémon can have different abilities? Get to know them more here.',
-            to: "/"
-        },
-        {
             img: gims,
             title: 'Have you already discovered your ideal gym?',
             subtitle: "If you haven't done it yet, enter here and find out which one goes with your personality.",
@@ -39,7 +32,7 @@ const Home: React.FC = ():JSX.Element => {
             img: regions,
             title: "Regions",
             subtitle: 'Know all the regions and the Pokémon that compose it with just one click.',
-            to: "/"
+            to: "/regions"
         }
     ]
 
