@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/PokePage/static/css/main.8feb5823.chunk.css",
+    "main.css": "/PokePage/static/css/main.54519468.chunk.css",
     "main.js": "/PokePage/static/js/main.ddd6a357.chunk.js",
     "main.js.map": "/PokePage/static/js/main.ddd6a357.chunk.js.map",
     "runtime-main.js": "/PokePage/static/js/runtime-main.39711517.js",
@@ -10,7 +10,7 @@
     "static/js/3.d957b1b8.chunk.js": "/PokePage/static/js/3.d957b1b8.chunk.js",
     "static/js/3.d957b1b8.chunk.js.map": "/PokePage/static/js/3.d957b1b8.chunk.js.map",
     "index.html": "/PokePage/index.html",
-    "static/css/main.8feb5823.chunk.css.map": "/PokePage/static/css/main.8feb5823.chunk.css.map",
+    "static/css/main.54519468.chunk.css.map": "/PokePage/static/css/main.54519468.chunk.css.map",
     "static/js/2.b7ef30a7.chunk.js.LICENSE.txt": "/PokePage/static/js/2.b7ef30a7.chunk.js.LICENSE.txt",
     "static/media/Instinct.9d831a31.jpeg": "/PokePage/static/media/Instinct.9d831a31.jpeg",
     "static/media/background.0dcc62bd.png": "/PokePage/static/media/background.0dcc62bd.png",
@@ -28,7 +28,7 @@
   "entrypoints": [
     "static/js/runtime-main.39711517.js",
     "static/js/2.b7ef30a7.chunk.js",
-    "static/css/main.8feb5823.chunk.css",
+    "static/css/main.54519468.chunk.css",
     "static/js/main.ddd6a357.chunk.js"
   ]
 }
